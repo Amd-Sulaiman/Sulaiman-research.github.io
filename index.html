@@ -1,91 +1,351 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Ash | Hardware Research</title>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>Sulaiman | Hardware Research Lab</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
+
+*{margin:0;padding:0;box-sizing:border-box}
+
 body{
-font-family:Arial;
-margin:40px;
-background:#0f172a;
+font-family:Inter, sans-serif;
+background:#0a0f1c;
+color:#e6edf3;
+line-height:1.7;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+/* NAVBAR */
+
+nav{
+position:fixed;
+width:100%;
+top:0;
+background:#020617;
+padding:15px 50px;
+display:flex;
+justify-content:space-between;
+z-index:1000;
+}
+
+nav a{
+color:#9ca3af;
+margin-left:20px;
+text-decoration:none;
+font-weight:500;
+}
+
+nav a:hover{
+color:#38bdf8;
+}
+
+/* HERO */
+
+.hero{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:20px;
+}
+
+.hero h1{
+font-size:52px;
+color:#38bdf8;
+animation:fadeUp 1.5s ease;
+}
+
+.hero p{
+max-width:600px;
+margin-top:20px;
+font-size:18px;
+color:#9ca3af;
+animation:fadeUp 2s ease;
+}
+
+/* SECTION */
+
+.section{
+max-width:1100px;
+margin:auto;
+padding:100px 20px;
+}
+
+.section h2{
+color:#38bdf8;
+margin-bottom:30px;
+font-size:32px;
+}
+
+/* PROJECT GRID */
+
+.projects{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:25px;
+}
+
+.card{
+background:#111827;
+padding:25px;
+border-radius:12px;
+transition:all .3s ease;
+}
+
+.card:hover{
+transform:translateY(-10px);
+box-shadow:0 10px 40px rgba(0,0,0,0.4);
+}
+
+.card h3{
+color:#38bdf8;
+margin-bottom:10px;
+}
+
+/* HARDWARE GALLERY */
+
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+}
+
+.gallery img{
+width:100%;
+border-radius:12px;
+transition:.3s;
+}
+
+.gallery img:hover{
+transform:scale(1.05);
+}
+
+/* CONTACT FORM */
+
+form{
+max-width:500px;
+}
+
+input,textarea{
+width:100%;
+padding:12px;
+margin-top:10px;
+margin-bottom:20px;
+border:none;
+border-radius:6px;
+background:#1f2937;
 color:white;
 }
 
-h1{
-color:#38bdf8;
+button{
+padding:12px 25px;
+background:#38bdf8;
+border:none;
+border-radius:6px;
+cursor:pointer;
 }
 
-.section{
-margin-top:40px;
+button:hover{
+background:#0ea5e9;
 }
 
-.project{
-background:#1e293b;
-padding:20px;
-margin:10px 0;
-border-radius:10px;
+/* FOOTER */
+
+footer{
+text-align:center;
+padding:40px;
+background:#020617;
+color:#9ca3af;
 }
-a{
-color:#38bdf8;
-text-decoration:none;
+
+/* ANIMATIONS */
+
+@keyframes fadeUp{
+0%{opacity:0;transform:translateY(40px)}
+100%{opacity:1;transform:translateY(0)}
 }
+
 </style>
 
 </head>
 
 <body>
 
-<h1>Sulaiman – Hardware & IoT Research</h1>
+<nav>
+<div><strong>Sulaiman Research</strong></div>
 
-<p>Physics graduate building medical IoT systems and embedded hardware devices.</p>
+<div>
+<a href="#projects">Projects</a>
+<a href="#research">Research</a>
+<a href="#hardware">Hardware</a>
+<a href="#contact">Contact</a>
+</div>
+</nav>
 
-<div class="section">
-<h2>Projects</h2>
 
-<div class="project">
+<!-- HERO -->
+
+<section class="hero">
+
+<h1>Sulaiman</h1>
+
+<p>
+Independent Hardware Researcher developing low-power sensing devices,
+medical IoT systems and experimental embedded hardware.
+</p>
+
+</section>
+
+
+<!-- PROJECTS -->
+
+<section class="section" id="projects">
+
+<h2>Research Projects</h2>
+
+<div class="projects">
+
+<div class="card">
 <h3>NFC Temperature Sensor</h3>
-<p>Low power NFC sensor using ST25DV64KC + TMP117.</p>
+<p>
+Battery assisted NFC sensor using ST25DV64KC and TMP117 for wireless temperature logging.
+</p>
 </div>
 
-<div class="project">
+<div class="card">
 <h3>Sickle Cell Monitoring System</h3>
-<p>IoT based monitoring system for sickle cell disease parameters.</p>
+<p>
+IoT based biomedical monitoring system for early detection of sickle cell complications.
+</p>
 </div>
 
-<div class="project">
+<div class="card">
 <h3>Air Quality Monitoring System</h3>
-<p>ESP32 + ENS160 real-time gas monitoring dashboard.</p>
+<p>
+ESP32 + ENS160 gas monitoring device with real-time web dashboard.
+</p>
+</div>
+
+<div class="card">
+<h3>Rehabilitation Shoe Monitoring</h3>
+<p>
+Smart rehabilitation shoe measuring gait pressure patterns and patient recovery progress.
+</p>
+</div>
+
+<div class="card">
+<h3>EOG Eye Movement Interface</h3>
+<p>
+Electrooculography based system detecting eye movement signals for assistive control systems.
+</p>
+</div>
+
+<div class="card">
+<h3>WildGuard Forest Monitoring</h3>
+<p>
+IoT wildlife protection system detecting forest intrusions and environmental threats.
+</p>
+</div>
+
+<div class="card">
+<h3> Motion Detector</h3>
+<p>
+ wearable sensors.
+</p>
 </div>
 
 </div>
 
+</section>
 
-<div class="section">
+
+<!-- RESEARCH IDEAS -->
+
+<section class="section" id="research">
+
 <h2>Research Ideas</h2>
 
 <ul>
-<li>medical grade temperature sensor with NFC tag</li>
-<li>Wearable disease monitoring systems</li>
-<li>Low power biomedical embedded devices</li>
+
+<li>Batteryless medical sensors powered through NFC energy harvesting</li>
+
+<li>Continuous health monitoring wearable devices</li>
+
+<li>Ultra low power biomedical embedded systems</li>
+
+<li>neurological disorder detection</li>
+
+<li>AI assisted biomedical sensing systems</li>
+
 </ul>
 
+</section>
+
+
+<!-- HARDWARE -->
+
+<section class="section" id="hardware">
+
+<h2>Hardware Lab</h2>
+
+<div class="gallery">
+
+<img src="images/hardware1.jpg">
+<img src="images/hardware2.jpg">
+<img src="images/hardware3.jpg">
+<img src="images/hardware4.jpg">
+
 </div>
 
-
-<div class="section">
-<h2>Hardware Work</h2>
-
-<p>ESP32, ATtiny85, ST25DV NFC, TMP117 sensors</p>
-
-</div>
+</section>
 
 
-<div class="section">
-<h2>GitHub</h2>
+<!-- CONTACT -->
 
-<a href="https://github.com/YOURUSERNAME">Visit my GitHub</a>
+<section class="section" id="contact">
 
-</div>
+<h2>mdsulaiman00786@gmail.com</h2>
+
+<form action="https://formspree.io/f/yourformid" method="POST">
+
+<input type="text" name="name" placeholder="Your Name" required>
+
+<input type="email" name="email" placeholder="Email" required>
+
+<textarea name="message" rows="5" placeholder="Message"></textarea>
+
+<button type="submit">Send Message</button>
+
+</form>
+
+<p style="margin-top:20px">
+
+GitHub:  
+<a href="https://github.com/Amd-Sulaiman">
+github.com/Amd-Sulaiman
+</a>
+
+</p>
+
+</section>
+
+
+<footer>
+
+© 2026 Sulaiman — Independent Hardware Research
+
+</footer>
 
 </body>
 </html>
