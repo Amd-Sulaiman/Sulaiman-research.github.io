@@ -1,351 +1,1070 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-
-<title>Sulaiman | Hardware Research Lab</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-
+<title>MD MD Sulaimaniman — Hardware Inventor &amp; IoT Researcher</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=JetBrains+Mono:wght@400;500&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
 <style>
 
-*{margin:0;padding:0;box-sizing:border-box}
-
-body{
-font-family:Inter, sans-serif;
-background:#0a0f1c;
-color:#e6edf3;
-line-height:1.7;
+/* ══════════════════════════
+   DARK THEME
+══════════════════════════ */
+:root,
+[data-theme="dark"] {
+  --bg:            #0c0c0c;
+  --bg2:           #111111;
+  --yellow:        #f5c842;
+  --yellow-dim:    rgba(245,200,66,0.10);
+  --yellow-glow:   rgba(245,200,66,0.20);
+  --yellow-border: rgba(245,200,66,0.28);
+  --text:          #f0ebe0;
+  --muted:         #686868;
+  --muted2:        #333333;
+  --border:        rgba(255,255,255,0.07);
+  --border2:       rgba(255,255,255,0.13);
+  --folder-bg:     #131108;
+  --folder-open:   #181508;
+  --nav-bg:        rgba(12,12,12,0.58);
+  --nav-shadow:    0 1px 0 rgba(255,255,255,0.06), 0 4px 24px rgba(0,0,0,0.5);
+  --grid-line:     rgba(245,200,66,0.022);
+  --glow-color:    rgba(245,200,66,0.055);
+  --fade-edge:     #0c0c0c;
+  --chip-bg:       rgba(255,255,255,0.04);
+  --stat-bg:       #111111;
+  --stat-hover:    #131108;
+  --toggle-bg:     #1e1e1e;
+  --toggle-border: rgba(255,255,255,0.10);
+  --toggle-icon:   #888888;
+  --scroll-border: #333333;
+  --btn-sec-border:#ffffff1f;
+  --btn-sec-hover: rgba(255,255,255,0.04);
+  --gh-bg:         rgba(255,255,255,0.02);
+  --idea-bg:       #111111;
+  --contact-gh-bg: rgba(255,255,255,0.04);
 }
 
-html{
-scroll-behavior:smooth;
+/* ══════════════════════════
+   LIGHT THEME
+══════════════════════════ */
+[data-theme="light"] {
+  --bg:            #faf8f4;
+  --bg2:           #f3f0ea;
+  --yellow:        #c89a00;
+  --yellow-dim:    rgba(200,154,0,0.09);
+  --yellow-glow:   rgba(200,154,0,0.18);
+  --yellow-border: rgba(200,154,0,0.30);
+  --text:          #1a1a1a;
+  --muted:         #7a7265;
+  --muted2:        #c0b8ac;
+  --border:        rgba(0,0,0,0.08);
+  --border2:       rgba(0,0,0,0.13);
+  --folder-bg:     #f0ece2;
+  --folder-open:   #ebe6d8;
+  --nav-bg:        rgba(255,255,255,0.72);
+  --nav-shadow:    0 1px 0 rgba(0,0,0,0.06), 0 4px 24px rgba(0,0,0,0.06);
+  --grid-line:     rgba(200,154,0,0.06);
+  --glow-color:    rgba(200,154,0,0.07);
+  --fade-edge:     #faf8f4;
+  --chip-bg:       rgba(0,0,0,0.04);
+  --stat-bg:       #f3f0ea;
+  --stat-hover:    #e8e3d6;
+  --toggle-bg:     #ede9e0;
+  --toggle-border: rgba(0,0,0,0.10);
+  --toggle-icon:   #888888;
+  --scroll-border: #c8c0b4;
+  --btn-sec-border:rgba(0,0,0,0.13);
+  --btn-sec-hover: rgba(0,0,0,0.04);
+  --gh-bg:         rgba(0,0,0,0.03);
+  --idea-bg:       #f3f0ea;
+  --contact-gh-bg: rgba(0,0,0,0.04);
 }
 
-/* NAVBAR */
-
-nav{
-position:fixed;
-width:100%;
-top:0;
-background:#020617;
-padding:15px 50px;
-display:flex;
-justify-content:space-between;
-z-index:1000;
+/* ══════════════════════════
+   GLOBAL RESET & TRANSITIONS
+══════════════════════════ */
+*, *::before, *::after {
+  margin: 0; padding: 0; box-sizing: border-box;
+  transition: background-color .35s ease, border-color .35s ease,
+              color .35s ease, box-shadow .35s ease;
+}
+svg, img { transition: none !important; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
 }
 
-nav a{
-color:#9ca3af;
-margin-left:20px;
-text-decoration:none;
-font-weight:500;
+/* ══ BACKGROUND ══ */
+.bg-grid {
+  position: fixed; inset: 0;
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 56px 56px;
+  pointer-events: none; z-index: 0;
+}
+.bg-glow {
+  position: fixed; top: -25%; left: 50%; transform: translateX(-50%);
+  width: 1000px; height: 700px;
+  background: radial-gradient(ellipse, var(--glow-color) 0%, transparent 68%);
+  pointer-events: none; z-index: 0;
 }
 
-nav a:hover{
-color:#38bdf8;
+/* ══ NAVBAR — Magic UI glass ══ */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  height: 58px;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 40px;
+  background: var(--nav-bg);
+  backdrop-filter: blur(28px) saturate(200%) brightness(1.04);
+  -webkit-backdrop-filter: blur(28px) saturate(200%) brightness(1.04);
+  border-bottom: 1px solid var(--border);
+  box-shadow: var(--nav-shadow);
+}
+.nav-logo {
+  display: flex; align-items: center; gap: 10px;
+  font-family: 'Instrument Serif', serif; font-size: 20px;
+  color: var(--text); letter-spacing: -0.3px; text-decoration: none;
+}
+.nav-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--yellow); box-shadow: 0 0 8px var(--yellow);
+  animation: blink 3s ease infinite;
+}
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:.35} }
+
+.nav-right { display: flex; align-items: center; gap: 4px; }
+.nav-links { display: flex; align-items: center; gap: 4px; }
+.nav-links a {
+  color: var(--muted); text-decoration: none;
+  font-size: 13px; font-weight: 500;
+  padding: 6px 13px; border-radius: 6px;
+  letter-spacing: .01em;
+}
+.nav-links a:hover { color: var(--text); background: var(--chip-bg); }
+.nav-tag {
+  background: var(--yellow-dim) !important;
+  border: 1px solid var(--yellow-border) !important;
+  color: var(--yellow) !important;
+  font-family: 'JetBrains Mono', monospace; font-size: 11px !important;
+}
+.nav-tag:hover { background: var(--yellow-glow) !important; }
+
+/* ── Theme toggle ── */
+.theme-toggle {
+  width: 34px; height: 34px; border-radius: 8px; margin-left: 8px;
+  background: var(--toggle-bg); border: 1px solid var(--toggle-border);
+  color: var(--toggle-icon); cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; position: relative; overflow: hidden;
+}
+.theme-toggle:hover { border-color: var(--yellow-border); color: var(--yellow); background: var(--yellow-dim); }
+.t-sun, .t-moon {
+  position: absolute;
+  transition: opacity .3s ease, transform .3s ease;
+}
+[data-theme="dark"]  .t-sun  { opacity: 1;  transform: rotate(0deg)   scale(1);   }
+[data-theme="dark"]  .t-moon { opacity: 0;  transform: rotate(90deg)  scale(.5);  }
+[data-theme="light"] .t-sun  { opacity: 0;  transform: rotate(-90deg) scale(.5);  }
+[data-theme="light"] .t-moon { opacity: 1;  transform: rotate(0deg)   scale(1);   }
+
+/* ══ HERO ══ */
+.hero {
+  min-height: 100vh;
+  display: flex; flex-direction: column;
+  justify-content: center; align-items: center; text-align: center;
+  padding: 100px 24px 80px; position: relative; z-index: 2;
+}
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 9px;
+  font-family: 'JetBrains Mono', monospace; font-size: 11px;
+  color: var(--yellow); letter-spacing: .14em; text-transform: uppercase;
+  margin-bottom: 30px; padding: 7px 16px;
+  border: 1px solid var(--yellow-border); border-radius: 100px;
+  background: var(--yellow-dim);
+  animation: fadeUp .55s ease both;
+}
+.hero h1 {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(58px, 9.5vw, 116px);
+  line-height: .93; letter-spacing: -3px; color: var(--text);
+  animation: fadeUp .72s ease both; animation-delay: .07s;
+}
+.hero h1 em {
+  font-style: italic; color: var(--yellow);
+  position: relative; display: inline-block;
+}
+.hero h1 em::after {
+  content: ''; position: absolute; bottom: 4px; left: 0; right: 0;
+  height: 3px; background: var(--yellow); opacity: .35; border-radius: 2px;
+}
+.hero-desc {
+  max-width: 570px; margin: 32px auto 0;
+  font-size: 17px; font-weight: 300; color: var(--muted); line-height: 1.78;
+  animation: fadeUp .85s ease both; animation-delay: .14s;
+}
+.hero-desc strong { color: var(--text); font-weight: 500; }
+.hero-ctas {
+  display: flex; gap: 12px; margin-top: 44px;
+  animation: fadeUp .95s ease both; animation-delay: .2s;
+}
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 13px 26px; background: var(--yellow);
+  color: #0c0c0c; font-weight: 700; font-size: 14px;
+  border-radius: 9px; text-decoration: none; letter-spacing: .01em;
+  font-family: 'DM Sans', sans-serif; border: none; cursor: pointer;
+}
+.btn-primary:hover { filter: brightness(1.08); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(245,200,66,.35); }
+[data-theme="light"] .btn-primary { color: #fff; }
+.btn-secondary {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 13px 26px; background: transparent; color: var(--text);
+  font-weight: 500; font-size: 14px; border-radius: 9px;
+  text-decoration: none; border: 1px solid var(--btn-sec-border);
+  font-family: 'DM Sans', sans-serif;
+}
+.btn-secondary:hover { border-color: var(--yellow-border); background: var(--btn-sec-hover); transform: translateY(-2px); }
+
+.hero-stack {
+  display: flex; align-items: center; gap: 9px; margin-top: 52px;
+  flex-wrap: wrap; justify-content: center;
+  animation: fadeUp 1s ease both; animation-delay: .27s;
+}
+.stack-label {
+  font-size: 11px; font-weight: 600; color: var(--muted);
+  letter-spacing: .1em; text-transform: uppercase; margin-right: 3px;
+}
+.stack-chip {
+  font-family: 'JetBrains Mono', monospace; font-size: 11px;
+  padding: 5px 11px; border-radius: 5px;
+  background: var(--chip-bg); border: 1px solid var(--border);
+  color: var(--muted); cursor: default;
+}
+.stack-chip:hover { color: var(--yellow); border-color: var(--yellow-border); background: var(--yellow-dim); }
+
+.hero-scroll {
+  position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  animation: fadeUp 1s ease both; animation-delay: .38s;
+}
+.scroll-mouse {
+  width: 22px; height: 34px; border: 1.5px solid var(--scroll-border);
+  border-radius: 11px; display: flex; justify-content: center; padding-top: 6px;
+}
+.scroll-wheel {
+  width: 3px; height: 6px; background: var(--yellow); border-radius: 2px;
+  animation: scrollWheel 2s ease infinite;
+}
+@keyframes scrollWheel { 0%{transform:translateY(0);opacity:1} 100%{transform:translateY(10px);opacity:0} }
+
+/* ══ ABOUT ══ */
+.about-strip {
+  position: relative; z-index: 2;
+  border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+  padding: 72px 40px;
+  display: grid; grid-template-columns: 1fr 1.7fr; gap: 80px;
+  max-width: 1100px; margin: 0 auto;
+}
+@media(max-width:768px){ .about-strip { grid-template-columns:1fr; gap:40px; padding:48px 24px; } }
+.about-label {
+  font-family: 'JetBrains Mono', monospace; font-size: 11px;
+  color: var(--yellow); letter-spacing: .14em; text-transform: uppercase; margin-bottom: 16px;
+}
+.about-heading {
+  font-family: 'Instrument Serif', serif; font-size: 40px;
+  line-height: 1.08; letter-spacing: -1px; color: var(--text);
+}
+.about-heading em { font-style: italic; color: var(--yellow); }
+.about-text { font-size: 15px; font-weight: 300; color: var(--muted); line-height: 1.88; }
+.about-text strong { color: var(--text); font-weight: 500; }
+.about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 28px; }
+.stat-box {
+  padding: 18px 20px; background: var(--stat-bg);
+  border: 1px solid var(--border); border-radius: 10px;
+}
+.stat-box:hover { border-color: var(--yellow-border); background: var(--stat-hover); }
+.stat-box-num {
+  font-family: 'Instrument Serif', serif; font-size: 30px;
+  color: var(--yellow); letter-spacing: -1px; line-height: 1;
+}
+.stat-box-label { font-size: 12px; color: var(--muted); margin-top: 4px; }
+
+/* ══ PROJECTS ══ */
+.projects-section { position: relative; z-index: 2; padding: 100px 0 80px; }
+.projects-header {
+  padding: 0 40px; margin-bottom: 44px;
+  display: flex; align-items: flex-end; justify-content: space-between;
+  max-width: 1100px; margin-left: auto; margin-right: auto;
+}
+@media(max-width:768px){ .projects-header { flex-direction:column; align-items:flex-start; gap:12px; padding:0 24px; } }
+.section-eyebrow {
+  font-family: 'JetBrains Mono', monospace; font-size: 11px;
+  color: var(--yellow); letter-spacing: .14em; text-transform: uppercase; margin-bottom: 12px;
+}
+.section-h {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(34px,5vw,52px); letter-spacing: -1.5px;
+  color: var(--text); line-height: 1.04; margin-bottom: 0;
+}
+.projects-hint {
+  font-family: 'JetBrains Mono', monospace; font-size: 11px;
+  color: var(--muted); display: flex; align-items: center; gap: 8px;
+}
+.hint-arr { color: var(--yellow); animation: nudge 2s ease infinite; }
+@keyframes nudge { 0%,100%{transform:translateX(0)} 50%{transform:translateX(6px)} }
+
+/* ── Scroll track ── */
+.folders-track-wrap { position: relative; overflow: hidden; }
+.folders-track-wrap::before,
+.folders-track-wrap::after {
+  content: ''; position: absolute; top: 0; bottom: 0;
+  width: 90px; z-index: 10; pointer-events: none;
+}
+.folders-track-wrap::before { left:  0; background: linear-gradient( 90deg, var(--fade-edge), transparent); }
+.folders-track-wrap::after  { right: 0; background: linear-gradient(-90deg, var(--fade-edge), transparent); }
+.folders-track {
+  display: flex; gap: 18px; padding: 16px 90px 36px;
+  overflow-x: auto; scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  cursor: grab; user-select: none; scrollbar-width: none;
+}
+.folders-track::-webkit-scrollbar { display: none; }
+.folders-track.dragging { cursor: grabbing; }
+
+/* ── Folder card ── */
+.folder {
+  flex: 0 0 330px; scroll-snap-align: start;
+  background: var(--folder-bg); border: 1px solid var(--yellow-border);
+  border-radius: 14px; overflow: hidden;
+  transition: transform .35s cubic-bezier(.34,1.2,.64,1),
+              box-shadow .35s ease, border-color .35s ease, background .35s ease;
+  position: relative; display: flex; flex-direction: column;
+}
+/* top tab accent */
+.folder::before {
+  content: ''; position: absolute; top: 0; left: 22px;
+  width: 52px; height: 3px;
+  background: var(--yellow); border-radius: 0 0 3px 3px;
+  opacity: 0; transition: opacity .3s;
+}
+.folder:hover {
+  border-color: var(--yellow); transform: translateY(-5px);
+  box-shadow: 0 18px 55px rgba(0,0,0,.12), 0 0 0 1px var(--yellow-glow);
+}
+.folder:hover::before { opacity: 1; }
+.folder.open {
+  border-color: var(--yellow); background: var(--folder-open);
+  transform: translateY(-8px);
+  box-shadow: 0 22px 65px rgba(0,0,0,.18), 0 0 0 1px var(--yellow-glow);
+}
+.folder.open::before { opacity: 1; }
+
+/* folder internals */
+.folder-top { padding: 22px 22px 18px; cursor: pointer; }
+.folder-icon-row {
+  display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;
+}
+.f-icon { width: 42px; height: 35px; }
+.folder-num {
+  font-family: 'JetBrains Mono', monospace; font-size: 10px;
+  color: var(--muted); letter-spacing: .08em;
+  background: var(--chip-bg); padding: 3px 8px;
+  border-radius: 4px; border: 1px solid var(--border);
 }
 
-/* HERO */
-
-.hero{
-height:100vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-text-align:center;
-padding:20px;
+/* ★ MAGIC UI BOLD TITLE */
+.folder-title {
+  font-family: 'Manrope', sans-serif;
+  font-size: 17px; font-weight: 800;
+  line-height: 1.18; letter-spacing: -.5px;
+  color: var(--text); margin-bottom: 9px;
 }
-
-.hero h1{
-font-size:52px;
-color:#38bdf8;
-animation:fadeUp 1.5s ease;
+.folder-teaser { font-size: 13px; color: var(--muted); font-weight: 300; line-height: 1.6; }
+.folder-tags { display: flex; flex-wrap: wrap; gap: 6px; padding: 0 22px 18px; }
+.f-tag {
+  font-family: 'JetBrains Mono', monospace; font-size: 10px;
+  padding: 3px 9px; border-radius: 4px;
+  background: var(--yellow-dim); border: 1px solid var(--yellow-border); color: var(--yellow);
 }
-
-.hero p{
-max-width:600px;
-margin-top:20px;
-font-size:18px;
-color:#9ca3af;
-animation:fadeUp 2s ease;
+.folder-toggle {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 13px 22px; border-top: 1px solid var(--border); cursor: pointer;
 }
-
-/* SECTION */
-
-.section{
-max-width:1100px;
-margin:auto;
-padding:100px 20px;
+.folder-toggle:hover { background: var(--chip-bg); }
+.toggle-label { font-size: 12px; font-weight: 500; color: var(--muted); letter-spacing: .03em; }
+.toggle-chevron {
+  width: 24px; height: 24px; border-radius: 50%;
+  background: var(--chip-bg); border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
 }
+.toggle-chevron svg { transition: transform .3s ease; color: var(--muted); }
+.folder.open .toggle-chevron { background: var(--yellow-dim); border-color: var(--yellow-border); }
+.folder.open .toggle-chevron svg { transform: rotate(180deg); color: var(--yellow); }
 
-.section h2{
-color:#38bdf8;
-margin-bottom:30px;
-font-size:32px;
+/* expand body */
+.folder-body { max-height: 0; overflow: hidden; transition: max-height .5s cubic-bezier(.4,0,.2,1); }
+.folder.open .folder-body { max-height: 900px; }
+.folder-body-inner {
+  padding: 18px 22px 22px; border-top: 1px solid var(--border);
+  display: flex; flex-direction: column; gap: 14px;
 }
-
-/* PROJECT GRID */
-
-.projects{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:25px;
+.folder-img {
+  width: 100%; border-radius: 9px; overflow: hidden;
+  border: 1px solid var(--border); aspect-ratio: 16/10;
+  background: var(--bg2); position: relative;
 }
-
-.card{
-background:#111827;
-padding:25px;
-border-radius:12px;
-transition:all .3s ease;
+.folder-img img { width:100%; height:100%; object-fit:cover; display:block; transition: transform .5s; }
+.folder-img:hover img { transform: scale(1.05); }
+.folder-img-label {
+  position: absolute; bottom: 7px; left: 10px;
+  font-family: 'JetBrains Mono', monospace; font-size: 9px; color: var(--muted);
 }
-
-.card:hover{
-transform:translateY(-10px);
-box-shadow:0 10px 40px rgba(0,0,0,0.4);
+.folder-specs { display: flex; flex-direction: column; gap: 7px; }
+.spec { display: flex; gap: 10px; align-items: baseline; }
+.spec-k {
+  font-family: 'JetBrains Mono', monospace; font-size: 10px;
+  color: var(--yellow); min-width: 68px; letter-spacing: .05em; flex-shrink: 0;
 }
-
-.card h3{
-color:#38bdf8;
-margin-bottom:10px;
+.spec-v { font-size: 12px; color: var(--muted); line-height: 1.5; }
+.folder-desc-full {
+  font-size: 12px; color: var(--muted); font-weight: 300; line-height: 1.78;
+  border-top: 1px solid var(--border); padding-top: 13px;
 }
-
-/* HARDWARE GALLERY */
-
-.gallery{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
+.folder-gh {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-family: 'JetBrains Mono', monospace; font-size: 11px;
+  color: var(--muted); text-decoration: none;
+  padding: 8px 14px; border: 1px solid var(--border);
+  border-radius: 7px; background: var(--gh-bg); margin-top: 2px;
 }
+.folder-gh:hover { color: var(--yellow); border-color: var(--yellow-border); background: var(--yellow-dim); }
 
-.gallery img{
-width:100%;
-border-radius:12px;
-transition:.3s;
+/* GitHub SVG path (reusable) */
+.gh-path { fill: currentColor; }
+
+/* ══ RESEARCH ══ */
+.research-section {
+  position: relative; z-index: 2; padding: 100px 40px;
+  max-width: 1100px; margin: 0 auto;
 }
-
-.gallery img:hover{
-transform:scale(1.05);
+@media(max-width:768px){ .research-section { padding: 80px 24px; } }
+.section-sub {
+  font-size: 15px; color: var(--muted); font-weight: 300;
+  max-width: 400px; margin-bottom: 48px; line-height: 1.7;
 }
-
-/* CONTACT FORM */
-
-form{
-max-width:500px;
+.ideas-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(190px,1fr)); gap: 13px; }
+.idea {
+  padding: 22px 20px; background: var(--idea-bg);
+  border: 1px solid var(--border); border-radius: 12px;
+  cursor: default; position: relative; overflow: hidden;
 }
-
-input,textarea{
-width:100%;
-padding:12px;
-margin-top:10px;
-margin-bottom:20px;
-border:none;
-border-radius:6px;
-background:#1f2937;
-color:white;
+.idea::after {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg,transparent,var(--yellow),transparent);
+  opacity: 0; transition: opacity .3s;
 }
+.idea:hover { border-color: var(--yellow-border); transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,0,0,.1); }
+.idea:hover::after { opacity: 1; }
+.idea-emoji { font-size: 22px; margin-bottom: 12px; display: block; }
+.idea-title { font-size: 13px; font-weight: 500; color: var(--text); line-height: 1.55; }
 
-button{
-padding:12px 25px;
-background:#38bdf8;
-border:none;
-border-radius:6px;
-cursor:pointer;
+/* ══ CONTACT ══ */
+.contact-section {
+  position: relative; z-index: 2; padding: 80px 40px 120px;
+  max-width: 1100px; margin: 0 auto; border-top: 1px solid var(--border);
 }
-
-button:hover{
-background:#0ea5e9;
+@media(max-width:768px){ .contact-section { padding: 60px 24px 80px; } }
+.contact-wrap { display: flex; flex-direction: column; align-items: center; text-align: center; }
+.contact-cta {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(38px,6.5vw,72px); letter-spacing: -2px; line-height: .98;
+  color: var(--text); margin-bottom: 20px;
 }
-
-/* FOOTER */
-
-footer{
-text-align:center;
-padding:40px;
-background:#020617;
-color:#9ca3af;
+.contact-cta em { font-style: italic; color: var(--yellow); }
+.contact-sub {
+  font-size: 15px; color: var(--muted); font-weight: 300;
+  margin-bottom: 36px; max-width: 340px; line-height: 1.7;
 }
-
-/* ANIMATIONS */
-
-@keyframes fadeUp{
-0%{opacity:0;transform:translateY(40px)}
-100%{opacity:1;transform:translateY(0)}
+.contact-links { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+.contact-link {
+  display: inline-flex; align-items: center; gap: 9px;
+  padding: 12px 22px; border-radius: 9px; text-decoration: none;
+  font-size: 13px; font-weight: 500;
 }
+.contact-link.email { background: var(--yellow); color: #fff; }
+[data-theme="dark"] .contact-link.email { color: #0c0c0c; }
+.contact-link.email:hover { transform: translateY(-2px); filter: brightness(1.08); box-shadow: 0 8px 28px rgba(245,200,66,.3); }
+.contact-link.github {
+  background: var(--contact-gh-bg); color: var(--text); border: 1px solid var(--border2);
+}
+.contact-link.github:hover { border-color: var(--yellow-border); background: var(--yellow-dim); transform: translateY(-2px); }
 
+/* ══ FOOTER ══ */
+footer {
+  position: relative; z-index: 2;
+  border-top: 1px solid var(--border); padding: 22px 40px;
+  display: flex; align-items: center; justify-content: space-between;
+  color: var(--muted); font-size: 12px;
+}
+.footer-name { font-family: 'Instrument Serif', serif; font-size: 16px; color: var(--text); }
+.footer-name span { color: var(--yellow); }
+
+/* ══ ANIMATIONS ══ */
+@keyframes fadeUp { from{opacity:0;transform:translateY(26px)} to{opacity:1;transform:translateY(0)} }
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity .7s ease, transform .7s ease; }
+.reveal.visible { opacity: 1; transform: none; }
+.reveal-stagger > * { opacity: 0; transform: translateY(16px); transition: opacity .5s ease, transform .5s ease; }
+.reveal-stagger.visible > * { opacity: 1; transform: none; }
+.reveal-stagger.visible > *:nth-child(1){ transition-delay:.04s }
+.reveal-stagger.visible > *:nth-child(2){ transition-delay:.09s }
+.reveal-stagger.visible > *:nth-child(3){ transition-delay:.14s }
+.reveal-stagger.visible > *:nth-child(4){ transition-delay:.19s }
+.reveal-stagger.visible > *:nth-child(5){ transition-delay:.24s }
+
+/* ══ RESPONSIVE ══ */
+@media(max-width:520px){
+  nav { padding: 0 20px; }
+  .nav-links a:not(.nav-tag) { display: none; }
+  footer { flex-direction: column; gap: 6px; text-align: center; }
+}
 </style>
-
 </head>
-
 <body>
 
-<nav>
-<div><strong>Sulaiman Research</strong></div>
+<div class="bg-grid"></div>
+<div class="bg-glow"></div>
 
-<div>
-<a href="#projects">Projects</a>
-<a href="#research">Research</a>
-<a href="#hardware">Hardware</a>
-<a href="#contact">Contact</a>
-</div>
+<!-- ═══ NAVBAR ═══ -->
+<nav>
+  <a href="#" class="nav-logo"><div class="nav-dot"></div>MD Sulaiman</a>
+  <div class="nav-right">
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#research">Research</a>
+      <a href="#contact" class="nav-tag">Contact ↗</a>
+    </div>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Switch theme">
+      <!-- Sun icon -->
+      <svg class="t-sun" width="15" height="15" viewBox="0 0 24 24" fill="none"
+           stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="5"/>
+        <line x1="12" y1="1"  x2="12" y2="3"/>
+        <line x1="12" y1="21" x2="12" y2="23"/>
+        <line x1="4.22"  y1="4.22"  x2="5.64"  y2="5.64"/>
+        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+        <line x1="1"  y1="12" x2="3"  y2="12"/>
+        <line x1="21" y1="12" x2="23" y2="12"/>
+        <line x1="4.22"  y1="19.78" x2="5.64"  y2="18.36"/>
+        <line x1="18.36" y1="5.64"  x2="19.78" y2="4.22"/>
+      </svg>
+      <!-- Moon icon -->
+      <svg class="t-moon" width="14" height="14" viewBox="0 0 24 24" fill="none"
+           stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+      </svg>
+    </button>
+  </div>
 </nav>
 
-
-<!-- HERO -->
-
+<!-- ═══ HERO ═══ -->
 <section class="hero">
-
-<h1>Sulaiman</h1>
-
-<p>
-Independent Hardware Researcher developing low-power sensing devices,
-medical IoT systems and experimental embedded hardware.
-</p>
-
+  <div class="hero-eyebrow"><span>⚡</span> Hardware Inventor · IoT Researcher</div>
+  <h1>I build<br><em>things</em> that<br>sense the world</h1>
+  <p class="hero-desc">
+    An <strong>inventor at heart</strong> — constantly experimenting, prototyping, and pushing
+    the edges of <strong>IoT and embedded hardware</strong>. Currently exploring low-power
+    sensing and biomedical systems.
+  </p>
+  <div class="hero-ctas">
+    <a href="#projects" class="btn-primary">View Projects →</a>
+    <a href="#contact"  class="btn-secondary">Get in Touch</a>
+  </div>
+  <div class="hero-stack">
+    <span class="stack-label">Stack</span>
+    <span class="stack-chip">ESP32</span>
+    <span class="stack-chip">NFC</span>
+    <span class="stack-chip">IMU</span>
+    <span class="stack-chip">MAX30102</span>
+    <span class="stack-chip">EOG</span>
+    <span class="stack-chip">ENS160</span>
+    <span class="stack-chip">I²C</span>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
+  </div>
 </section>
 
-
-<!-- PROJECTS -->
-
-<section class="section" id="projects">
-
-<h2>Research Projects</h2>
-
-<div class="projects">
-
-<div class="card">
-<h3>NFC Temperature Sensor</h3>
-<p>
-Battery assisted NFC sensor using ST25DV64KC and TMP117 for wireless temperature logging.
-</p>
+<!-- ═══ ABOUT ═══ -->
+<div id="about" class="about-strip reveal">
+  <div>
+    <div class="about-label">Who I am</div>
+    <h2 class="about-heading">Inventor.<br><em>Experimenter.</em><br>Researcher.</h2>
+  </div>
+  <div>
+    <p class="about-text">
+      I'm an <strong>independent hardware researcher</strong> who loves taking an idea from a
+      blank PCB to a working prototype. I believe the best way to learn is to
+      <strong>build real things</strong> — then break them, iterate, and build again.<br><br>
+      Currently <strong>exploring IoT and hardware</strong> — specifically low-power sensing,
+      wireless data transmission, and biomedical embedded systems. Actively looking to
+      <strong>collaborate on research</strong> and push these ideas further into the real world.
+    </p>
+    <div class="about-stats">
+      <div class="stat-box"><div class="stat-box-num">6+</div><div class="stat-box-label">Hardware Prototypes</div></div>
+      <div class="stat-box"><div class="stat-box-num">IoT</div><div class="stat-box-label">Primary Focus</div></div>
+      <div class="stat-box"><div class="stat-box-num">NFC</div><div class="stat-box-label">Wireless Specialty</div></div>
+      <div class="stat-box"><div class="stat-box-num">OSS</div><div class="stat-box-label">Open Source</div></div>
+    </div>
+  </div>
 </div>
 
-<div class="card">
-<h3>Sickle Cell Monitoring System</h3>
-<p>
-IoT based biomedical monitoring system for early detection of sickle cell complications.
-</p>
-</div>
+<!-- ═══ PROJECTS ═══ -->
+<section id="projects" class="projects-section">
+  <div class="projects-header reveal">
+    <div>
+      <div class="section-eyebrow">Research Portfolio</div>
+      <h2 class="section-h">Projects</h2>
+    </div>
+    <div class="projects-hint">Drag or scroll to explore <span class="hint-arr">→→</span></div>
+  </div>
 
-<div class="card">
-<h3>Air Quality Monitoring System</h3>
-<p>
-ESP32 + ENS160 gas monitoring device with real-time web dashboard.
-</p>
-</div>
+  <div class="folders-track-wrap">
+    <div class="folders-track" id="track">
 
-<div class="card">
-<h3>Rehabilitation Shoe Monitoring</h3>
-<p>
-Smart rehabilitation shoe measuring gait pressure patterns and patient recovery progress.
-</p>
-</div>
+      <!-- ── FOLDER 01 ── -->
+      <div class="folder">
+        <div class="folder-top" onclick="toggleFolder(this.closest('.folder'))">
+          <div class="folder-icon-row">
+            <svg class="f-icon" viewBox="0 0 44 36" fill="none">
+              <path d="M2 8C2 6.34 3.34 5 5 5H17L22 10H39C40.66 10 42 11.34 42 13V31C42 32.66 40.66 34 39 34H5C3.34 34 2 32.66 2 31V8Z" fill="var(--yellow-dim)" stroke="var(--yellow)" stroke-width="1.3"/>
+              <path d="M2 15H42" stroke="var(--yellow)" stroke-width="0.7" opacity="0.4"/>
+            </svg>
+            <span class="folder-num">01 / 06</span>
+          </div>
+          <div class="folder-title">WildGuard Self-Defense Taser</div>
+          <div class="folder-teaser">Telescopic taser extending up to 3 feet with dual safety locks and LED indicators.</div>
+        </div>
+        <div class="folder-tags">
+          <span class="f-tag">hardware</span>
+          <span class="f-tag">safety</span>
+          <span class="f-tag">telescopic</span>
+        </div>
+        <div class="folder-toggle" onclick="toggleFolder(this.closest('.folder'))">
+          <span class="toggle-label">Open folder</span>
+          <div class="toggle-chevron">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+              <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </div>
+        <div class="folder-body">
+          <div class="folder-body-inner">
+            <div class="folder-img">
+              <img src="images/Wildguard P1.jpg" alt="WildGuard"
+                   onerror="this.src='https://placehold.co/600x375/131108/f5c842?text=WildGuard+P1'">
+              <span class="folder-img-label">wildguard_prototype_v1.jpg</span>
+            </div>
+            <div class="folder-specs">
+              <div class="spec"><span class="spec-k">RANGE</span><span class="spec-v">Telescopic rod up to 3 feet</span></div>
+              <div class="spec"><span class="spec-k">SAFETY</span><span class="spec-v">Dual safety lock + LED indicators</span></div>
+              <div class="spec"><span class="spec-k">OUTPUT</span><span class="spec-v">High-voltage taser discharge</span></div>
+            </div>
+            <p class="folder-desc-full">Compact self-defense device integrating a telescopic rod and high-voltage taser module. Dual safety locks prevent accidental discharge. Field tested for durability and real-world usability.</p>
+            <a href="https://github.com/Amd-Sulaiman" target="_blank" class="folder-gh">
+              <svg width="13" height="13" viewBox="0 0 24 24"><path class="gh-path" d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+              github.com/Amd-Sulaiman
+            </a>
+          </div>
+        </div>
+      </div>
 
-<div class="card">
-<h3>EOG Eye Movement Interface</h3>
-<p>
-Electrooculography based system detecting eye movement signals for assistive control systems.
-</p>
-</div>
+      <!-- ── FOLDER 02 ── -->
+      <div class="folder">
+        <div class="folder-top" onclick="toggleFolder(this.closest('.folder'))">
+          <div class="folder-icon-row">
+            <svg class="f-icon" viewBox="0 0 44 36" fill="none">
+              <path d="M2 8C2 6.34 3.34 5 5 5H17L22 10H39C40.66 10 42 11.34 42 13V31C42 32.66 40.66 34 39 34H5C3.34 34 2 32.66 2 31V8Z" fill="var(--yellow-dim)" stroke="var(--yellow)" stroke-width="1.3"/>
+              <path d="M2 15H42" stroke="var(--yellow)" stroke-width="0.7" opacity="0.4"/>
+            </svg>
+            <span class="folder-num">02 / 06</span>
+          </div>
+          <div class="folder-title">Ankle Rehabilitation Monitor</div>
+          <div class="folder-teaser">Wearable ESP32-S3 + IMU device for real-time ankle motion tracking post-surgery.</div>
+        </div>
+        <div class="folder-tags">
+          <span class="f-tag">ESP32-S3</span>
+          <span class="f-tag">IMU</span>
+          <span class="f-tag">wearable</span>
+          <span class="f-tag">medical</span>
+        </div>
+        <div class="folder-toggle" onclick="toggleFolder(this.closest('.folder'))">
+          <span class="toggle-label">Open folder</span>
+          <div class="toggle-chevron">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+              <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </div>
+        <div class="folder-body">
+          <div class="folder-body-inner">
+            <div class="folder-img">
+              <img src="images/Prototype P2.jpg" alt="Ankle Rehab"
+                   onerror="this.src='https://placehold.co/600x375/131108/f5c842?text=Prototype+P2'">
+              <span class="folder-img-label">ankle_rehab_wearable_v1.jpg</span>
+            </div>
+            <div class="folder-specs">
+              <div class="spec"><span class="spec-k">MCU</span><span class="spec-v">ESP32-S3 (Wi-Fi + BLE)</span></div>
+              <div class="spec"><span class="spec-k">SENSOR</span><span class="spec-v">IMU — accelerometer + gyroscope</span></div>
+              <div class="spec"><span class="spec-k">OUTPUT</span><span class="spec-v">Real-time motion data logging</span></div>
+              <div class="spec"><span class="spec-k">USE</span><span class="spec-v">Post-surgery rehabilitation</span></div>
+            </div>
+            <p class="folder-desc-full">Wearable IoT device for quantitative ankle motion tracking. Replaces subjective recovery assessments with precise gait and range-of-motion analytics for clinicians and patients.</p>
+            <a href="https://github.com/Amd-Sulaiman" target="_blank" class="folder-gh">
+              <svg width="13" height="13" viewBox="0 0 24 24"><path class="gh-path" d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+              github.com/Amd-Sulaiman
+            </a>
+          </div>
+        </div>
+      </div>
 
-<div class="card">
-<h3>WildGuard Forest Monitoring</h3>
-<p>
-IoT wildlife protection system detecting forest intrusions and environmental threats.
-</p>
-</div>
+      <!-- ── FOLDER 03 ── -->
+      <div class="folder">
+        <div class="folder-top" onclick="toggleFolder(this.closest('.folder'))">
+          <div class="folder-icon-row">
+            <svg class="f-icon" viewBox="0 0 44 36" fill="none">
+              <path d="M2 8C2 6.34 3.34 5 5 5H17L22 10H39C40.66 10 42 11.34 42 13V31C42 32.66 40.66 34 39 34H5C3.34 34 2 32.66 2 31V8Z" fill="var(--yellow-dim)" stroke="var(--yellow)" stroke-width="1.3"/>
+              <path d="M2 15H42" stroke="var(--yellow)" stroke-width="0.7" opacity="0.4"/>
+            </svg>
+            <span class="folder-num">03 / 06</span>
+          </div>
+          <div class="folder-title">Medical NFC Temperature Monitor</div>
+          <div class="folder-teaser">ESP32 + TMP117 + ST25DV NFC tag with live dashboard and smartphone read.</div>
+        </div>
+        <div class="folder-tags">
+          <span class="f-tag">NFC</span>
+          <span class="f-tag">ESP32</span>
+          <span class="f-tag">TMP117</span>
+          <span class="f-tag">healthcare</span>
+        </div>
+        <div class="folder-toggle" onclick="toggleFolder(this.closest('.folder'))">
+          <span class="toggle-label">Open folder</span>
+          <div class="toggle-chevron">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+              <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </div>
+        <div class="folder-body">
+          <div class="folder-body-inner">
+            <div class="folder-img">
+              <img src="images/Prototype P3.jpg" alt="NFC Temp"
+                   onerror="this.src='https://placehold.co/600x375/131108/f5c842?text=Prototype+P3'">
+              <span class="folder-img-label">nfc_temp_monitor_v1.jpg</span>
+            </div>
+            <div class="folder-specs">
+              <div class="spec"><span class="spec-k">MCU</span><span class="spec-v">ESP32 with Wi-Fi</span></div>
+              <div class="spec"><span class="spec-k">SENSOR</span><span class="spec-v">TMP117 — ±0.1°C precision</span></div>
+              <div class="spec"><span class="spec-k">NFC</span><span class="spec-v">ST25DV64KC via I²C + NDEF</span></div>
+              <div class="spec"><span class="spec-k">VARIANTS</span><span class="spec-v">Cold chain, patient skin patch</span></div>
+            </div>
+            <p class="folder-desc-full">Healthcare data logging with smartphone NFC retrieval and live web dashboard. Modifiable for cold chain logistics or wearable skin-patch patient monitoring.</p>
+            <a href="https://github.com/Amd-Sulaimanlaiman" target="_blank" class="folder-gh">
+              <svg width="13" height="13" viewBox="0 0 24 24"><path class="gh-path" d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+              github.com/Amd-Sulaimanlaiman
+            </a>
+          </div>
+        </div>
+      </div>
 
-<div class="card">
-<h3> Motion Detector</h3>
-<p>
- wearable sensors.
-</p>
-</div>
+      <!-- ── FOLDER 04 ── -->
+      <div class="folder">
+        <div class="folder-top" onclick="toggleFolder(this.closest('.folder'))">
+          <div class="folder-icon-row">
+            <svg class="f-icon" viewBox="0 0 44 36" fill="none">
+              <path d="M2 8C2 6.34 3.34 5 5 5H17L22 10H39C40.66 10 42 11.34 42 13V31C42 32.66 40.66 34 39 34H5C3.34 34 2 32.66 2 31V8Z" fill="var(--yellow-dim)" stroke="var(--yellow)" stroke-width="1.3"/>
+              <path d="M2 15H42" stroke="var(--yellow)" stroke-width="0.7" opacity="0.4"/>
+            </svg>
+            <span class="folder-num">04 / 06</span>
+          </div>
+          <div class="folder-title">EOG Blink-Control Interface</div>
+          <div class="folder-teaser">Eye-blink signals for hands-free HMI. Internally extensible to EEG and EMG.</div>
+        </div>
+        <div class="folder-tags">
+          <span class="f-tag">EOG</span>
+          <span class="f-tag">biomedical</span>
+          <span class="f-tag">assistive</span>
+          <span class="f-tag">HMI</span>
+        </div>
+        <div class="folder-toggle" onclick="toggleFolder(this.closest('.folder'))">
+          <span class="toggle-label">Open folder</span>
+          <div class="toggle-chevron">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+              <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </div>
+        <div class="folder-body">
+          <div class="folder-body-inner">
+            <div class="folder-img">
+              <img src="images/EOG P4.jpg" alt="EOG Interface"
+                   onerror="this.src='https://placehold.co/600x375/131108/f5c842?text=EOG+P4'">
+              <span class="folder-img-label">eog_blink_interface_v1.jpg</span>
+            </div>
+            <div class="folder-specs">
+              <div class="spec"><span class="spec-k">METHOD</span><span class="spec-v">Electrooculography signal detection</span></div>
+              <div class="spec"><span class="spec-k">INPUT</span><span class="spec-v">Eye-blink events</span></div>
+              <div class="spec"><span class="spec-k">OUTPUT</span><span class="spec-v">Hands-free device control</span></div>
+              <div class="spec"><span class="spec-k">EXTEND</span><span class="spec-v">EEG &amp; EMG modifiable internally</span></div>
+            </div>
+            <p class="folder-desc-full">Electrooculography control system for hands-free HMI in assistive technology. Designed to be internally tweakable to support EEG brain-computer and EMG muscle-control interfaces.</p>
+            <a href="https://github.com/Amd-Sulaimanlaiman" target="_blank" class="folder-gh">
+              <svg width="13" height="13" viewBox="0 0 24 24"><path class="gh-path" d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+              github.com/Amd-Sulaimanlaiman
+            </a>
+          </div>
+        </div>
+      </div>
 
-</div>
+      <!-- ── FOLDER 05 ── -->
+      <div class="folder">
+        <div class="folder-top" onclick="toggleFolder(this.closest('.folder'))">
+          <div class="folder-icon-row">
+            <svg class="f-icon" viewBox="0 0 44 36" fill="none">
+              <path d="M2 8C2 6.34 3.34 5 5 5H17L22 10H39C40.66 10 42 11.34 42 13V31C42 32.66 40.66 34 39 34H5C3.34 34 2 32.66 2 31V8Z" fill="var(--yellow-dim)" stroke="var(--yellow)" stroke-width="1.3"/>
+              <path d="M2 15H42" stroke="var(--yellow)" stroke-width="0.7" opacity="0.4"/>
+            </svg>
+            <span class="folder-num">05 / 06</span>
+          </div>
+          <div class="folder-title">Air Quality Smart Dashboard</div>
+          <div class="folder-teaser">ENS160 + AHT + ESP32 delivering live AQI data through an embedded web dashboard.</div>
+        </div>
+        <div class="folder-tags">
+          <span class="f-tag">ESP32</span>
+          <span class="f-tag">ENS160</span>
+          <span class="f-tag">AQI</span>
+          <span class="f-tag">dashboard</span>
+        </div>
+        <div class="folder-toggle" onclick="toggleFolder(this.closest('.folder'))">
+          <span class="toggle-label">Open folder</span>
+          <div class="toggle-chevron">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+              <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </div>
+        <div class="folder-body">
+          <div class="folder-body-inner">
+            <div class="folder-img">
+              <img src="images/AirQuality P5.jpg" alt="Air Quality"
+                   onerror="this.src='https://placehold.co/600x375/131108/f5c842?text=AirQuality+P5'">
+              <span class="folder-img-label">air_quality_monitor_v1.jpg</span>
+            </div>
+            <div class="folder-specs">
+              <div class="spec"><span class="spec-k">MCU</span><span class="spec-v">ESP32 embedded web server</span></div>
+              <div class="spec"><span class="spec-k">GAS</span><span class="spec-v">ENS160 — eCO₂, TVOC, AQI</span></div>
+              <div class="spec"><span class="spec-k">ENV</span><span class="spec-v">AHT — temperature &amp; humidity</span></div>
+              <div class="spec"><span class="spec-k">DISPLAY</span><span class="spec-v">Live browser charts, no cloud needed</span></div>
+            </div>
+            <p class="folder-desc-full">Environmental monitoring with live browser dashboard. Tracks eCO₂, TVOC, temperature and humidity — accessible from any device on the local network without external services.</p>
+            <a href="https://github.com/Amd-Sulaiman" target="_blank" class="folder-gh">
+              <svg width="13" height="13" viewBox="0 0 24 24"><path class="gh-path" d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+              github.com/Amd-Sulaiman
+            </a>
+          </div>
+        </div>
+      </div>
 
+      <!-- ── FOLDER 06 ── -->
+      <div class="folder">
+        <div class="folder-top" onclick="toggleFolder(this.closest('.folder'))">
+          <div class="folder-icon-row">
+            <svg class="f-icon" viewBox="0 0 44 36" fill="none">
+              <path d="M2 8C2 6.34 3.34 5 5 5H17L22 10H39C40.66 10 42 11.34 42 13V31C42 32.66 40.66 34 39 34H5C3.34 34 2 32.66 2 31V8Z" fill="var(--yellow-dim)" stroke="var(--yellow)" stroke-width="1.3"/>
+              <path d="M2 15H42" stroke="var(--yellow)" stroke-width="0.7" opacity="0.4"/>
+            </svg>
+            <span class="folder-num">06 / 06</span>
+          </div>
+          <div class="folder-title">Sickle Cell Disease Monitor</div>
+          <div class="folder-teaser">ESP32 + MAX30102 measuring SpO₂ and heart rate with real-time visualization.</div>
+        </div>
+        <div class="folder-tags">
+          <span class="f-tag">ESP32</span>
+          <span class="f-tag">MAX30102</span>
+          <span class="f-tag">SpO₂</span>
+          <span class="f-tag">biomedical</span>
+        </div>
+        <div class="folder-toggle" onclick="toggleFolder(this.closest('.folder'))">
+          <span class="toggle-label">Open folder</span>
+          <div class="toggle-chevron">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+              <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </div>
+        <div class="folder-body">
+          <div class="folder-body-inner">
+            <div class="folder-img">
+              <img src="images/SCD P6.jpg" alt="SCD Monitor"
+                   onerror="this.src='https://placehold.co/600x375/131108/f5c842?text=SCD+P6'">
+              <span class="folder-img-label">sickle_cell_monitor_v1.jpg</span>
+            </div>
+            <div class="folder-specs">
+              <div class="spec"><span class="spec-k">MCU</span><span class="spec-v">ESP32 with Wi-Fi streaming</span></div>
+              <div class="spec"><span class="spec-k">SENSOR</span><span class="spec-v">MAX30102 pulse oximeter + HR</span></div>
+              <div class="spec"><span class="spec-k">MEASURES</span><span class="spec-v">SpO₂ blood oxygen + BPM</span></div>
+              <div class="spec"><span class="spec-k">USE</span><span class="spec-v">Sickle cell complication detection</span></div>
+            </div>
+            <p class="folder-desc-full">Physiological monitoring for early detection of sickle cell complications. Continuous, accessible vitals with real-time visualization for patients and clinicians — no hospital equipment needed.</p>
+            <a href="https://github.com/Amd-Sulaiman" target="_blank" class="folder-gh">
+              <svg width="13" height="13" viewBox="0 0 24 24"><path class="gh-path" d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+              github.com/Amd-Sulaiman
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /track -->
+  </div><!-- /track-wrap -->
 </section>
 
-
-<!-- RESEARCH IDEAS -->
-
-<section class="section" id="research">
-
-<h2>Research Ideas</h2>
-
-<ul>
-
-<li>Batteryless medical sensors powered through NFC energy harvesting</li>
-
-<li>Continuous health monitoring wearable devices</li>
-
-<li>Ultra low power biomedical embedded systems</li>
-
-<li>neurological disorder detection</li>
-
-<li>AI assisted biomedical sensing systems</li>
-
-</ul>
-
+<!-- ═══ RESEARCH IDEAS ═══ -->
+<section id="research" class="research-section reveal">
+  <div class="section-eyebrow">What's Next</div>
+  <h2 class="section-h" style="margin-bottom:12px">
+    Research <span style="font-family:'Instrument Serif',serif;font-style:italic;color:var(--yellow)">Ideas</span>
+  </h2>
+  <p class="section-sub">Directions I'm actively thinking about and want to push further.</p>
+  <div class="ideas-grid reveal-stagger">
+    <div class="idea">
+      <span class="idea-emoji">⚡</span>
+      <div class="idea-title">Batteryless medical sensors via NFC energy harvesting</div>
+    </div>
+    <div class="idea">
+      <span class="idea-emoji">🩺</span>
+      <div class="idea-title">Continuous health monitoring wearable devices</div>
+    </div>
+    <div class="idea">
+      <span class="idea-emoji">🔋</span>
+      <div class="idea-title">Ultra low-power biomedical embedded systems</div>
+    </div>
+    <div class="idea">
+      <span class="idea-emoji">🧠</span>
+      <div class="idea-title">Neurological disorder detection via biosignals</div>
+    </div>
+    <div class="idea">
+      <span class="idea-emoji">🤖</span>
+      <div class="idea-title">AI-assisted biomedical sensing systems</div>
+    </div>
+  </div>
 </section>
 
-
-<!-- HARDWARE -->
-
-<section class="section" id="hardware">
-
-<h2>Hardware Lab</h2>
-
-<div class="gallery">
-
-<img src="images/hardware1.jpg">
-<img src="images/hardware2.jpg">
-<img src="images/hardware3.jpg">
-<img src="images/hardware4.jpg">
-
-</div>
-
+<!-- ═══ CONTACT ═══ -->
+<section id="contact" class="contact-section">
+  <div class="contact-wrap reveal">
+    <h2 class="contact-cta">Let's build<br>something <em>real.</em></h2>
+    <p class="contact-sub">Open to research collaborations, hardware experiments, and new ideas worth pursuing.</p>
+    <div class="contact-links">
+      <a href="mailto:mdsulaiman00786@gmail.com" class="contact-link email">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+          <polyline points="22,6 12,13 2,6"/>
+        </svg>
+        mdsulaiman00786@gmail.com
+      </a>
+      <a href="https://github.com/Amd-Sulaiman" target="_blank" class="contact-link github">
+        <svg width="15" height="15" viewBox="0 0 24 24"><path class="gh-path" d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+        github.com/Amd-Sulaiman
+      </a>
+    </div>
+  </div>
 </section>
 
-
-<!-- CONTACT -->
-
-<section class="section" id="contact">
-
-<h2>mdsulaiman00786@gmail.com</h2>
-
-<form action="https://formspree.io/f/yourformid" method="POST">
-
-<input type="text" name="name" placeholder="Your Name" required>
-
-<input type="email" name="email" placeholder="Email" required>
-
-<textarea name="message" rows="5" placeholder="Message"></textarea>
-
-<button type="submit">Send Message</button>
-
-</form>
-
-<p style="margin-top:20px">
-
-GitHub:  
-<a href="https://github.com/Amd-Sulaiman">
-github.com/Amd-Sulaiman
-</a>
-
-</p>
-
-</section>
-
-
+<!-- ═══ FOOTER ═══ -->
 <footer>
-
-© 2026 Sulaiman — Independent Hardware Research
-
+  <div class="footer-name">MD Sulaiman <span>Research</span></div>
+  <div>© 2026 — Independent Hardware Research</div>
 </footer>
 
+<script>
+/* ══ THEME TOGGLE ══ */
+const htmlEl = document.documentElement;
+const toggleBtn = document.getElementById('themeToggle');
+
+// Restore saved preference
+const savedTheme = localStorage.getItem('MD Sulaiman-theme');
+if (savedTheme) htmlEl.setAttribute('data-theme', savedTheme);
+
+toggleBtn.addEventListener('click', () => {
+  const current = htmlEl.getAttribute('data-theme');
+  const next = current === 'dark' ? 'light' : 'dark';
+  htmlEl.setAttribute('data-theme', next);
+  localStorage.setItem('MD Sulaiman-theme', next);
+});
+
+/* ══ FOLDER OPEN / CLOSE ══ */
+function toggleFolder(folder) {
+  const isOpen = folder.classList.contains('open');
+  // Close all folders first
+  document.querySelectorAll('.folder').forEach(f => {
+    f.classList.remove('open');
+    const lbl = f.querySelector('.toggle-label');
+    if (lbl) lbl.textContent = 'Open folder';
+  });
+  // Open the clicked one if it was closed
+  if (!isOpen) {
+    folder.classList.add('open');
+    const lbl = folder.querySelector('.toggle-label');
+    if (lbl) lbl.textContent = 'Close folder';
+    // Scroll it into center view
+    setTimeout(() => {
+      folder.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    }, 60);
+  }
+}
+
+/* ══ DRAG-TO-SCROLL on horizontal track ══ */
+const track = document.getElementById('track');
+let isDragging = false, dragStartX = 0, trackScrollLeft = 0;
+
+track.addEventListener('mousedown', e => {
+  isDragging = true;
+  track.classList.add('dragging');
+  dragStartX = e.pageX - track.offsetLeft;
+  trackScrollLeft = track.scrollLeft;
+});
+document.addEventListener('mouseup', () => {
+  isDragging = false;
+  track.classList.remove('dragging');
+});
+track.addEventListener('mousemove', e => {
+  if (!isDragging) return;
+  e.preventDefault();
+  const x = e.pageX - track.offsetLeft;
+  track.scrollLeft = trackScrollLeft - (x - dragStartX) * 1.3;
+});
+track.addEventListener('touchstart', e => {
+  dragStartX = e.touches[0].pageX - track.offsetLeft;
+  trackScrollLeft = track.scrollLeft;
+}, { passive: true });
+track.addEventListener('touchmove', e => {
+  const x = e.touches[0].pageX - track.offsetLeft;
+  track.scrollLeft = trackScrollLeft - (x - dragStartX);
+}, { passive: true });
+
+/* ══ SCROLL REVEAL ══ */
+const revealObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.08 });
+
+document.querySelectorAll('.reveal, .reveal-stagger').forEach(el => revealObserver.observe(el));
+</script>
 </body>
 </html>
