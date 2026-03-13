@@ -3,1068 +3,1109 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>MD Sulaiman — Hardware Inventor &amp; IoT Researcher</title>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=JetBrains+Mono:wght@400;500&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
+<title>Mohammed Sulaiman — Research Engineer · Inventor</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
+/* ── TOKENS ── */
+:root,[data-theme="dark"]{
+  --bg:#09090b; --sur:#18181b; --sur2:#27272a;
+  --acc:#6366f1; --acc2:#818cf8; --acc3:#a5b4fc;
+  --ad:rgba(99,102,241,.14); --ag:rgba(99,102,241,.30); --ar:rgba(99,102,241,.40);
+  --gold:#f59e0b; --gd:rgba(245,158,11,.12); --gr:rgba(245,158,11,.34);
+  --tx:#ffffff; --tx2:#d4d4d8; --tx3:#a1a1aa;
+  --bd:rgba(255,255,255,.09); --bd2:rgba(255,255,255,.15);
+  --nav:rgba(9,9,11,.18); --chip:rgba(255,255,255,.08); --tgl:#27272a;
+}
+[data-theme="light"]{
+  --bg:#f0f0f8; --sur:#e8e8f2; --sur2:#dddde8;
+  --acc:#4f46e5; --acc2:#6366f1; --acc3:#4338ca;
+  --ad:rgba(79,70,229,.10); --ag:rgba(79,70,229,.22); --ar:rgba(79,70,229,.32);
+  --gold:#b45309; --gd:rgba(180,83,9,.10); --gr:rgba(180,83,9,.30);
+  --tx:#0a0a0f; --tx2:#27272a; --tx3:#52525b;
+  --bd:rgba(0,0,0,.09); --bd2:rgba(0,0,0,.15);
+  --nav:rgba(240,240,248,.22); --chip:rgba(0,0,0,.07); --tgl:#d4d4e0;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--tx);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+a{text-decoration:none;color:inherit;}
+img{display:block;}
 
-/* ══════════════════════════
-   DARK THEME
-══════════════════════════ */
-:root,
-[data-theme="dark"] {
-  --bg:            #0c0c0c;
-  --bg2:           #111111;
-  --yellow:        #f5c842;
-  --yellow-dim:    rgba(245,200,66,0.10);
-  --yellow-glow:   rgba(245,200,66,0.20);
-  --yellow-border: rgba(245,200,66,0.28);
-  --text:          #f0ebe0;
-  --muted:         #686868;
-  --muted2:        #333333;
-  --border:        rgba(255,255,255,0.07);
-  --border2:       rgba(255,255,255,0.13);
-  --folder-bg:     #131108;
-  --folder-open:   #181508;
-  --nav-bg:        rgba(12,12,12,0.58);
-  --nav-shadow:    0 1px 0 rgba(255,255,255,0.06), 0 4px 24px rgba(0,0,0,0.5);
-  --grid-line:     rgba(245,200,66,0.022);
-  --glow-color:    rgba(245,200,66,0.055);
-  --fade-edge:     #0c0c0c;
-  --chip-bg:       rgba(255,255,255,0.04);
-  --stat-bg:       #111111;
-  --stat-hover:    #131108;
-  --toggle-bg:     #1e1e1e;
-  --toggle-border: rgba(255,255,255,0.10);
-  --toggle-icon:   #888888;
-  --scroll-border: #333333;
-  --btn-sec-border:#ffffff1f;
-  --btn-sec-hover: rgba(255,255,255,0.04);
-  --gh-bg:         rgba(255,255,255,0.02);
-  --idea-bg:       #111111;
-  --contact-gh-bg: rgba(255,255,255,0.04);
-}
+/* ── MESH ── */
+.mesh{position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:radial-gradient(ellipse 62% 48% at 7% 14%,rgba(99,102,241,.10),transparent 54%),
+    radial-gradient(ellipse 48% 38% at 93% 82%,rgba(245,158,11,.07),transparent 50%),
+    radial-gradient(ellipse 38% 28% at 50% 0%,rgba(99,102,241,.06),transparent 46%);}
+[data-theme="light"] .mesh{background:
+    radial-gradient(ellipse 62% 48% at 7% 14%,rgba(79,70,229,.05),transparent 54%),
+    radial-gradient(ellipse 48% 38% at 93% 82%,rgba(180,83,9,.04),transparent 50%);}
 
-/* ══════════════════════════
-   LIGHT THEME
-══════════════════════════ */
-[data-theme="light"] {
-  --bg:            #faf8f4;
-  --bg2:           #f3f0ea;
-  --yellow:        #c89a00;
-  --yellow-dim:    rgba(200,154,0,0.09);
-  --yellow-glow:   rgba(200,154,0,0.18);
-  --yellow-border: rgba(200,154,0,0.30);
-  --text:          #1a1a1a;
-  --muted:         #7a7265;
-  --muted2:        #c0b8ac;
-  --border:        rgba(0,0,0,0.08);
-  --border2:       rgba(0,0,0,0.13);
-  --folder-bg:     #f0ece2;
-  --folder-open:   #ebe6d8;
-  --nav-bg:        rgba(255,255,255,0.72);
-  --nav-shadow:    0 1px 0 rgba(0,0,0,0.06), 0 4px 24px rgba(0,0,0,0.06);
-  --grid-line:     rgba(200,154,0,0.06);
-  --glow-color:    rgba(200,154,0,0.07);
-  --fade-edge:     #faf8f4;
-  --chip-bg:       rgba(0,0,0,0.04);
-  --stat-bg:       #f3f0ea;
-  --stat-hover:    #e8e3d6;
-  --toggle-bg:     #ede9e0;
-  --toggle-border: rgba(0,0,0,0.10);
-  --toggle-icon:   #888888;
-  --scroll-border: #c8c0b4;
-  --btn-sec-border:rgba(0,0,0,0.13);
-  --btn-sec-hover: rgba(0,0,0,0.04);
-  --gh-bg:         rgba(0,0,0,0.03);
-  --idea-bg:       #f3f0ea;
-  --contact-gh-bg: rgba(0,0,0,0.04);
-}
+/* ── NAV — glass ── */
+nav{position:fixed;inset:0 0 auto;height:54px;z-index:900;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 max(24px,4vw);background:var(--nav);
+  backdrop-filter:saturate(280%) blur(32px);-webkit-backdrop-filter:saturate(280%) blur(32px);
+  border-bottom:1px solid rgba(255,255,255,.07);}
+.nav-logo{display:flex;align-items:center;gap:9px;font-family:'Syne',sans-serif;font-size:15px;font-weight:700;color:var(--tx);}
+.nav-orb{width:7px;height:7px;border-radius:50%;background:var(--acc);box-shadow:0 0 10px var(--acc);animation:pulse 3s ease infinite;}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.28;transform:scale(.6)}}
+.nav-links{display:flex;align-items:center;gap:2px;}
+.nav-links a{font-size:13px;font-weight:500;color:var(--tx2);padding:5px 12px;border-radius:8px;transition:color .2s,background .2s;}
+.nav-links a:hover{color:var(--tx);background:var(--chip);}
+.nav-cta{font-size:12px!important;font-family:'JetBrains Mono',monospace!important;color:var(--acc2)!important;border:1px solid var(--ar)!important;background:var(--ad)!important;}
+.nav-cta:hover{background:var(--ag)!important;}
+.tbtn{width:30px;height:30px;border-radius:8px;margin-left:8px;background:var(--tgl);border:1px solid var(--bd2);color:var(--tx2);cursor:pointer;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;transition:all .2s;}
+.tbtn:hover{border-color:var(--ar);color:var(--acc2);}
+.ic-sun,.ic-moon{position:absolute;transition:opacity .3s,transform .3s;}
+[data-theme="dark"] .ic-sun{opacity:1;transform:scale(1);}
+[data-theme="dark"] .ic-moon{opacity:0;transform:scale(.4) rotate(90deg);}
+[data-theme="light"] .ic-sun{opacity:0;transform:scale(.4) rotate(-90deg);}
+[data-theme="light"] .ic-moon{opacity:1;transform:scale(1);}
+@media(max-width:600px){.nav-links a:not(.nav-cta){display:none;}}
 
-/* ══════════════════════════
-   GLOBAL RESET & TRANSITIONS
-══════════════════════════ */
-*, *::before, *::after {
-  margin: 0; padding: 0; box-sizing: border-box;
-  transition: background-color .35s ease, border-color .35s ease,
-              color .35s ease, box-shadow .35s ease;
-}
-svg, img { transition: none !important; }
-html { scroll-behavior: smooth; }
-body {
-  font-family: 'DM Sans', sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  overflow-x: hidden;
-}
+/* ── KEYFRAMES ── */
+@keyframes up{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+@keyframes whl{0%{opacity:1;transform:translateY(0)}100%{opacity:0;transform:translateY(9px)}}
+@keyframes arr{0%,100%{transform:translateX(0)}50%{transform:translateX(5px)}}
 
-/* ══ BACKGROUND ══ */
-.bg-grid {
-  position: fixed; inset: 0;
-  background-image:
-    linear-gradient(var(--grid-line) 1px, transparent 1px),
-    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
-  background-size: 56px 56px;
-  pointer-events: none; z-index: 0;
-}
-.bg-glow {
-  position: fixed; top: -25%; left: 50%; transform: translateX(-50%);
-  width: 1000px; height: 700px;
-  background: radial-gradient(ellipse, var(--glow-color) 0%, transparent 68%);
-  pointer-events: none; z-index: 0;
-}
+/* ── HERO ── */
+.hero{min-height:100vh;position:relative;z-index:2;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;text-align:center;padding:110px 32px 80px;}
+.h-badge{display:inline-flex;align-items:center;gap:8px;padding:6px 18px;border-radius:100px;
+  border:1px solid var(--ar);background:var(--ad);font-family:'JetBrains Mono',monospace;
+  font-size:10px;color:var(--acc3);letter-spacing:.16em;text-transform:uppercase;
+  margin-bottom:38px;animation:up .55s cubic-bezier(.34,1.2,.64,1) both;}
+.h-dot{width:5px;height:5px;border-radius:50%;background:var(--acc);box-shadow:0 0 8px var(--acc);animation:pulse 2s infinite;}
+.h-name{font-family:'Syne',sans-serif;font-size:clamp(44px,8vw,102px);font-weight:800;
+  line-height:1.0;letter-spacing:-1.5px;color:var(--tx);overflow:visible;padding:0 16px 18px;
+  animation:up .68s cubic-bezier(.34,1.2,.64,1) both .06s;}
+.h-name .grad{background:linear-gradient(135deg,var(--acc2) 0%,var(--gold) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-style:italic;}
+.h-roles{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;
+  margin-top:18px;animation:up .78s cubic-bezier(.34,1.2,.64,1) both .10s;}
+.h-role{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.10em;
+  text-transform:uppercase;padding:5px 14px;border-radius:100px;
+  border:1px solid var(--bd2);color:var(--tx2);background:var(--chip);}
+.h-role.a{color:var(--acc3);border-color:var(--ar);background:var(--ad);}
+.h-role.g{color:var(--gold);border-color:var(--gr);background:var(--gd);}
+.h-pitch{max-width:520px;margin:24px auto 0;font-size:15.5px;font-weight:400;
+  line-height:1.92;color:var(--tx2);animation:up .88s cubic-bezier(.34,1.2,.64,1) both .14s;}
+.h-pitch strong{color:var(--tx);font-weight:600;}
+.h-btns{display:flex;gap:12px;margin-top:34px;flex-wrap:wrap;justify-content:center;
+  animation:up .94s cubic-bezier(.34,1.2,.64,1) both .18s;}
+.btn-a{display:inline-flex;align-items:center;gap:8px;padding:13px 28px;background:var(--acc);
+  border:none;color:#fff;font-family:'DM Sans',sans-serif;font-weight:600;font-size:14px;
+  border-radius:980px;cursor:pointer;transition:all .25s;}
+.btn-a:hover{transform:translateY(-2px);box-shadow:0 12px 36px var(--ag);filter:brightness(1.1);}
+.btn-g{display:inline-flex;align-items:center;gap:8px;padding:13px 28px;background:transparent;
+  color:var(--tx);font-family:'DM Sans',sans-serif;font-weight:500;font-size:14px;
+  border-radius:980px;border:1px solid var(--bd2);transition:all .25s;}
+.btn-g:hover{border-color:var(--ar);background:var(--ad);transform:translateY(-2px);}
+.h-stack{display:flex;align-items:center;gap:6px;margin-top:38px;flex-wrap:wrap;
+  justify-content:center;animation:up .98s cubic-bezier(.34,1.2,.64,1) both .22s;}
+.stk-lbl{font-size:10px;font-weight:700;color:var(--tx3);letter-spacing:.12em;text-transform:uppercase;}
+.chip{font-family:'JetBrains Mono',monospace;font-size:10px;padding:4px 10px;border-radius:6px;
+  background:var(--chip);border:1px solid var(--bd);color:var(--tx2);transition:all .2s;cursor:default;}
+.chip:hover{color:var(--acc2);border-color:var(--ar);background:var(--ad);}
+.scroll-c{display:flex;flex-direction:column;align-items:center;gap:5px;margin-top:48px;
+  opacity:.5;animation:up 1.02s ease both .26s;}
+.scroll-m{width:20px;height:30px;border:1.5px solid var(--tx3);border-radius:10px;
+  display:flex;justify-content:center;padding-top:5px;}
+.scroll-d{width:2px;height:5px;background:var(--acc);border-radius:2px;animation:whl 2s ease infinite;}
+.scroll-t{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--tx3);font-family:'JetBrains Mono',monospace;}
 
-/* ══ NAVBAR — Magic UI glass ══ */
-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-  height: 58px;
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 0 40px;
-  background: var(--nav-bg);
-  backdrop-filter: blur(28px) saturate(200%) brightness(1.04);
-  -webkit-backdrop-filter: blur(28px) saturate(200%) brightness(1.04);
-  border-bottom: 1px solid var(--border);
-  box-shadow: var(--nav-shadow);
-}
-.nav-logo {
-  display: flex; align-items: center; gap: 10px;
-  font-family: 'Instrument Serif', serif; font-size: 20px;
-  color: var(--text); letter-spacing: -0.3px; text-decoration: none;
-}
-.nav-dot {
-  width: 7px; height: 7px; border-radius: 50%;
-  background: var(--yellow); box-shadow: 0 0 8px var(--yellow);
-  animation: blink 3s ease infinite;
-}
-@keyframes blink { 0%,100%{opacity:1} 50%{opacity:.35} }
+/* ── ABOUT ── */
+.about{position:relative;z-index:2;border-top:1px solid var(--bd);
+  padding:80px max(28px,4vw);max-width:1120px;margin:0 auto;
+  display:grid;grid-template-columns:1fr 1.85fr;gap:72px;}
+@media(max-width:740px){.about{grid-template-columns:1fr;gap:36px;padding:60px 22px;}}
+.kicker{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--acc2);
+  letter-spacing:.16em;text-transform:uppercase;margin-bottom:14px;}
+.sec-title{font-family:'Syne',sans-serif;font-size:clamp(26px,3.8vw,42px);
+  font-weight:800;line-height:1.06;letter-spacing:-1.5px;color:var(--tx);}
+.sec-title em{font-style:italic;color:var(--acc2);}
+.about-body{font-size:14.5px;font-weight:400;line-height:1.94;color:var(--tx2);}
+.about-body strong{color:var(--tx);font-weight:600;}
+.about-body p+p{margin-top:13px;}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-top:26px;}
+@media(max-width:560px){.stats{grid-template-columns:1fr 1fr;}}
+.stat{padding:14px 12px;background:var(--sur);border:1px solid var(--bd);
+  border-radius:11px;text-align:center;transition:border-color .25s,transform .25s;}
+.stat:hover{border-color:var(--ar);transform:translateY(-3px);}
+.stat-n{font-family:'Syne',sans-serif;font-size:20px;font-weight:800;
+  background:linear-gradient(135deg,var(--acc2),var(--gold));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;}
+.stat-l{font-size:10.5px;color:var(--tx2);margin-top:4px;line-height:1.3;font-weight:500;}
 
-.nav-right { display: flex; align-items: center; gap: 4px; }
-.nav-links { display: flex; align-items: center; gap: 4px; }
-.nav-links a {
-  color: var(--muted); text-decoration: none;
-  font-size: 13px; font-weight: 500;
-  padding: 6px 13px; border-radius: 6px;
-  letter-spacing: .01em;
-}
-.nav-links a:hover { color: var(--text); background: var(--chip-bg); }
-.nav-tag {
-  background: var(--yellow-dim) !important;
-  border: 1px solid var(--yellow-border) !important;
-  color: var(--yellow) !important;
-  font-family: 'JetBrains Mono', monospace; font-size: 11px !important;
-}
-.nav-tag:hover { background: var(--yellow-glow) !important; }
+/* ── GOV / MSME IMPACT ── */
+.impact{position:relative;z-index:2;border-top:1px solid var(--bd);
+  padding:72px max(28px,4vw);max-width:1120px;margin:0 auto;}
+.impact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-top:32px;}
+.impact-card{padding:22px 20px;background:var(--sur);border:1px solid var(--bd);
+  border-radius:14px;position:relative;overflow:hidden;
+  transition:border-color .28s,transform .28s,box-shadow .28s;}
+.impact-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;
+  border-radius:3px 0 0 3px;transition:opacity .25s;opacity:0;}
+.impact-card.gov::before{background:var(--acc2);}
+.impact-card.msme::before{background:var(--gold);}
+.impact-card:hover{transform:translateY(-4px);box-shadow:0 14px 32px rgba(0,0,0,.18);}
+.impact-card.gov:hover{border-color:var(--ar);}
+.impact-card.gov:hover::before{opacity:1;}
+.impact-card.msme:hover{border-color:var(--gr);}
+.impact-card.msme:hover::before{opacity:1;}
+.impact-badge{display:inline-flex;align-items:center;gap:5px;
+  font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.12em;text-transform:uppercase;
+  padding:3px 8px;border-radius:4px;margin-bottom:11px;}
+.impact-badge.gov{color:var(--acc3);background:var(--ad);border:1px solid var(--ar);}
+.impact-badge.msme{color:var(--gold);background:var(--gd);border:1px solid var(--gr);}
+.impact-title{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;
+  color:var(--tx);line-height:1.3;margin-bottom:8px;}
+.impact-desc{font-size:13px;color:var(--tx2);line-height:1.75;font-weight:400;}
+.impact-meta{display:flex;align-items:center;gap:8px;margin-top:12px;flex-wrap:wrap;}
+.impact-tag{font-family:'JetBrains Mono',monospace;font-size:9px;
+  color:var(--tx3);background:var(--chip);border:1px solid var(--bd2);
+  padding:2px 7px;border-radius:4px;}
 
-/* ── Theme toggle ── */
-.theme-toggle {
-  width: 34px; height: 34px; border-radius: 8px; margin-left: 8px;
-  background: var(--toggle-bg); border: 1px solid var(--toggle-border);
-  color: var(--toggle-icon); cursor: pointer;
-  display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0; position: relative; overflow: hidden;
-}
-.theme-toggle:hover { border-color: var(--yellow-border); color: var(--yellow); background: var(--yellow-dim); }
-.t-sun, .t-moon {
-  position: absolute;
-  transition: opacity .3s ease, transform .3s ease;
-}
-[data-theme="dark"]  .t-sun  { opacity: 1;  transform: rotate(0deg)   scale(1);   }
-[data-theme="dark"]  .t-moon { opacity: 0;  transform: rotate(90deg)  scale(.5);  }
-[data-theme="light"] .t-sun  { opacity: 0;  transform: rotate(-90deg) scale(.5);  }
-[data-theme="light"] .t-moon { opacity: 1;  transform: rotate(0deg)   scale(1);   }
+/* ── PROJECTS ── */
+.projects{position:relative;z-index:2;padding:72px 0 80px;border-top:1px solid var(--bd);}
+.proj-hdr{max-width:1120px;margin:0 auto 44px;padding:0 max(28px,4vw);
+  display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+.proj-eyebrow{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--acc2);
+  letter-spacing:.16em;text-transform:uppercase;margin-bottom:9px;}
+.proj-title{font-family:'Syne',sans-serif;font-weight:800;line-height:.95;
+  display:flex;align-items:flex-end;gap:12px;}
+.proj-title .sm{font-size:clamp(12px,1.5vw,16px);font-weight:400;color:var(--tx3);
+  font-family:'JetBrains Mono',monospace;letter-spacing:.06em;text-transform:uppercase;padding-bottom:4px;}
+.proj-title .big{font-size:clamp(34px,4.8vw,58px);letter-spacing:-2.5px;
+  -webkit-text-stroke:2px var(--acc2);color:transparent;font-style:italic;}
+.proj-hint{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--tx2);
+  display:flex;align-items:center;gap:5px;padding-bottom:3px;}
+.hint-arr{color:var(--acc2);animation:arr 1.8s ease infinite;}
+.proj-zone{max-width:1120px;margin:0 auto;padding:0 max(28px,4vw);}
+.proj-row{display:flex;align-items:flex-start;min-height:560px;position:relative;}
 
-/* ══ HERO ══ */
-.hero {
-  min-height: 100vh;
-  display: flex; flex-direction: column;
-  justify-content: center; align-items: center; text-align: center;
-  padding: 100px 24px 80px; position: relative; z-index: 2;
-}
-.hero-eyebrow {
-  display: inline-flex; align-items: center; gap: 9px;
-  font-family: 'JetBrains Mono', monospace; font-size: 11px;
-  color: var(--yellow); letter-spacing: .14em; text-transform: uppercase;
-  margin-bottom: 30px; padding: 7px 16px;
-  border: 1px solid var(--yellow-border); border-radius: 100px;
-  background: var(--yellow-dim);
-  animation: fadeUp .55s ease both;
-}
-.hero h1 {
-  font-family: 'Instrument Serif', serif;
-  font-size: clamp(58px, 9.5vw, 116px);
-  line-height: .93; letter-spacing: -3px; color: var(--text);
-  animation: fadeUp .72s ease both; animation-delay: .07s;
-}
-.hero h1 em {
-  font-style: italic; color: var(--yellow);
-  position: relative; display: inline-block;
-}
-.hero h1 em::after {
-  content: ''; position: absolute; bottom: 4px; left: 0; right: 0;
-  height: 3px; background: var(--yellow); opacity: .35; border-radius: 2px;
-}
-.hero-desc {
-  max-width: 570px; margin: 32px auto 0;
-  font-size: 17px; font-weight: 300; color: var(--muted); line-height: 1.78;
-  animation: fadeUp .85s ease both; animation-delay: .14s;
-}
-.hero-desc strong { color: var(--text); font-weight: 500; }
-.hero-ctas {
-  display: flex; gap: 12px; margin-top: 44px;
-  animation: fadeUp .95s ease both; animation-delay: .2s;
-}
-.btn-primary {
-  display: inline-flex; align-items: center; gap: 8px;
-  padding: 13px 26px; background: var(--yellow);
-  color: #0c0c0c; font-weight: 700; font-size: 14px;
-  border-radius: 9px; text-decoration: none; letter-spacing: .01em;
-  font-family: 'DM Sans', sans-serif; border: none; cursor: pointer;
-}
-.btn-primary:hover { filter: brightness(1.08); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(245,200,66,.35); }
-[data-theme="light"] .btn-primary { color: #fff; }
-.btn-secondary {
-  display: inline-flex; align-items: center; gap: 8px;
-  padding: 13px 26px; background: transparent; color: var(--text);
-  font-weight: 500; font-size: 14px; border-radius: 9px;
-  text-decoration: none; border: 1px solid var(--btn-sec-border);
-  font-family: 'DM Sans', sans-serif;
-}
-.btn-secondary:hover { border-color: var(--yellow-border); background: var(--btn-sec-hover); transform: translateY(-2px); }
+/* ── LEFT PANEL ── */
+.proj-panel{flex-shrink:0;width:0;overflow:hidden;opacity:0;
+  transition:width .55s cubic-bezier(.25,.46,.45,.94),opacity .4s ease;}
+.proj-panel.open{width:min(500px,52vw);opacity:1;}
+.panel-card{width:min(500px,52vw);background:var(--sur);border:1px solid var(--bd2);
+  border-radius:16px;overflow:hidden;position:relative;margin-right:32px;
+  display:flex;flex-direction:column;min-height:480px;}
+.panel-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--pc,var(--acc)) 38%,var(--gold) 72%,transparent);
+  z-index:3;transition:background .38s;}
+.pan-img{width:100%;height:180px;flex-shrink:0;background:var(--sur2);overflow:hidden;}
+.pan-img img{width:100%;height:100%;object-fit:cover;object-position:center top;}
+.pan-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;
+  font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--tx3);letter-spacing:.12em;
+  background:linear-gradient(135deg,var(--sur2),rgba(99,102,241,.10));text-align:center;padding:16px;}
+.pan-body{padding:18px 20px 20px;flex:1;overflow-y:auto;scrollbar-width:thin;scrollbar-color:var(--sur2) transparent;}
+.pan-close{position:absolute;top:11px;right:11px;z-index:10;width:26px;height:26px;
+  border-radius:50%;background:rgba(0,0,0,.35);border:1px solid var(--bd2);color:var(--tx2);
+  cursor:pointer;display:flex;align-items:center;justify-content:center;
+  font-size:11px;transition:all .2s;line-height:1;}
+.pan-close:hover{background:rgba(239,68,68,.25);color:#ef4444;border-color:rgba(239,68,68,.40);}
+.pan-num{font-family:'JetBrains Mono',monospace;font-size:8px;color:var(--acc2);letter-spacing:.14em;margin-bottom:5px;}
+.pan-title{font-family:'Syne',sans-serif;font-size:18px;font-weight:800;color:var(--tx);line-height:1.15;letter-spacing:-.3px;margin-bottom:13px;}
+.pan-specs{display:flex;flex-direction:column;gap:6px;margin-bottom:12px;}
+.pan-row{display:flex;gap:10px;align-items:baseline;}
+.pan-key{font-family:'JetBrains Mono',monospace;font-size:8.5px;color:var(--gold);min-width:65px;flex-shrink:0;letter-spacing:.06em;font-weight:600;}
+.pan-val{font-size:12.5px;color:var(--tx);line-height:1.45;font-weight:400;}
+.pan-sep{width:100%;height:1px;background:var(--bd2);margin:10px 0;}
+.pan-desc{font-size:13px;color:var(--tx2);line-height:1.84;margin-bottom:12px;font-weight:400;}
+.pan-tags{display:flex;flex-wrap:wrap;gap:4px;}
+.pan-tag{font-family:'JetBrains Mono',monospace;font-size:8.5px;padding:2px 8px;
+  border-radius:4px;background:var(--ad);border:1px solid var(--ar);color:var(--acc3);}
 
-.hero-stack {
-  display: flex; align-items: center; gap: 9px; margin-top: 52px;
-  flex-wrap: wrap; justify-content: center;
-  animation: fadeUp 1s ease both; animation-delay: .27s;
-}
-.stack-label {
-  font-size: 11px; font-weight: 600; color: var(--muted);
-  letter-spacing: .1em; text-transform: uppercase; margin-right: 3px;
-}
-.stack-chip {
-  font-family: 'JetBrains Mono', monospace; font-size: 11px;
-  padding: 5px 11px; border-radius: 5px;
-  background: var(--chip-bg); border: 1px solid var(--border);
-  color: var(--muted); cursor: default;
-}
-.stack-chip:hover { color: var(--yellow); border-color: var(--yellow-border); background: var(--yellow-dim); }
+/* ── RIGHT STACK ──
+   FINAL FIX: 100% pure 2D — zero rotateY, zero preserve-3d, zero perspective.
+   This completely eliminates:
+     • Card intersection (3D z-fighting from rotateY in perspective context)
+     • Cursor flicker on back cards (caused by transform-style:preserve-3d hit-testing)
+   Visual tilt is faked with scaleX only — looks 3D, behaves 2D. ── */
+.stack-wrap{
+  flex:1; min-width:360px; height:520px;
+  position:relative; flex-shrink:0;
+  /* NO perspective, NO transform-style here */
+  transition:transform .55s cubic-bezier(.25,.46,.45,.94);}
+.stack-wrap.shifted{transform:translateX(36px);}
+.file-stack{
+  position:relative; width:100%; height:100%;
+  /* NO preserve-3d, NO perspective — pure flat 2D compositor */}
 
-.hero-scroll {
-  position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%);
-  display: flex; flex-direction: column; align-items: center; gap: 6px;
-  animation: fadeUp 1s ease both; animation-delay: .38s;
-}
-.scroll-mouse {
-  width: 22px; height: 34px; border: 1.5px solid var(--scroll-border);
-  border-radius: 11px; display: flex; justify-content: center; padding-top: 6px;
-}
-.scroll-wheel {
-  width: 3px; height: 6px; background: var(--yellow); border-radius: 2px;
-  animation: scrollWheel 2s ease infinite;
-}
-@keyframes scrollWheel { 0%{transform:translateY(0);opacity:1} 100%{transform:translateY(10px);opacity:0} }
+/* ── FILE CARDS — PURE 2D STAIRCASE ──
+   Each card: absolute positioned at same origin, then offset via transform only.
+   scaleX(0.88) fakes the 3D perspective tilt without any real 3D — no z-fighting.
+   Z-index is set correctly: card 1 (front) = 7, card 7 (back) = 1.
+   JS bumps z-index on mouseenter/leave so hovered cards always clear neighbours. */
+.fcard{
+  position:absolute;
+  width:230px; height:300px;
+  top:180px; left:10px;
+  cursor:pointer;
+  /* NO transform-style:preserve-3d — this was the flicker source */
+  will-change:transform;
+  transition:
+    transform .52s cubic-bezier(.25,.46,.45,.94),
+    filter .28s ease,
+    box-shadow .4s ease,
+    opacity .28s ease;
+  transform-origin:left center;}
 
-/* ══ ABOUT ══ */
-.about-strip {
-  position: relative; z-index: 2;
-  border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
-  padding: 72px 40px;
-  display: grid; grid-template-columns: 1fr 1.7fr; gap: 80px;
-  max-width: 1100px; margin: 0 auto;
-}
-@media(max-width:768px){ .about-strip { grid-template-columns:1fr; gap:40px; padding:48px 24px; } }
-.about-label {
-  font-family: 'JetBrains Mono', monospace; font-size: 11px;
-  color: var(--yellow); letter-spacing: .14em; text-transform: uppercase; margin-bottom: 16px;
-}
-.about-heading {
-  font-family: 'Instrument Serif', serif; font-size: 40px;
-  line-height: 1.08; letter-spacing: -1px; color: var(--text);
-}
-.about-heading em { font-style: italic; color: var(--yellow); }
-.about-text { font-size: 15px; font-weight: 300; color: var(--muted); line-height: 1.88; }
-.about-text strong { color: var(--text); font-weight: 500; }
-.about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 28px; }
-.stat-box {
-  padding: 18px 20px; background: var(--stat-bg);
-  border: 1px solid var(--border); border-radius: 10px;
-}
-.stat-box:hover { border-color: var(--yellow-border); background: var(--stat-hover); }
-.stat-box-num {
-  font-family: 'Instrument Serif', serif; font-size: 30px;
-  color: var(--yellow); letter-spacing: -1px; line-height: 1;
-}
-.stat-box-label { font-size: 12px; color: var(--muted); margin-top: 4px; }
+/* Pure 2D staircase — translateX steps right, translateY steps up, scaleX shrinks for depth illusion */
+/* Card 1 = front/largest, Card 7 = back/smallest */
+.fcard:nth-child(1){transform:translate(  0px,  0px) scaleX(.86);z-index:7;}
+.fcard:nth-child(2){transform:translate( 22px,-34px) scaleX(.84);z-index:6;}
+.fcard:nth-child(3){transform:translate( 44px,-68px) scaleX(.82);z-index:5;}
+.fcard:nth-child(4){transform:translate( 66px,-102px) scaleX(.80);z-index:4;}
+.fcard:nth-child(5){transform:translate( 88px,-136px) scaleX(.78);z-index:3;}
+.fcard:nth-child(6){transform:translate(110px,-170px) scaleX(.76);z-index:2;}
+.fcard:nth-child(7){transform:translate(132px,-204px) scaleX(.74);z-index:1;}
 
-/* ══ PROJECTS ══ */
-.projects-section { position: relative; z-index: 2; padding: 100px 0 80px; }
-.projects-header {
-  padding: 0 40px; margin-bottom: 44px;
-  display: flex; align-items: flex-end; justify-content: space-between;
-  max-width: 1100px; margin-left: auto; margin-right: auto;
-}
-@media(max-width:768px){ .projects-header { flex-direction:column; align-items:flex-start; gap:12px; padding:0 24px; } }
-.section-eyebrow {
-  font-family: 'JetBrains Mono', monospace; font-size: 11px;
-  color: var(--yellow); letter-spacing: .14em; text-transform: uppercase; margin-bottom: 12px;
-}
-.section-h {
-  font-family: 'Instrument Serif', serif;
-  font-size: clamp(34px,5vw,52px); letter-spacing: -1.5px;
-  color: var(--text); line-height: 1.04; margin-bottom: 0;
-}
-.projects-hint {
-  font-family: 'JetBrains Mono', monospace; font-size: 11px;
-  color: var(--muted); display: flex; align-items: center; gap: 8px;
-}
-.hint-arr { color: var(--yellow); animation: nudge 2s ease infinite; }
-@keyframes nudge { 0%,100%{transform:translateX(0)} 50%{transform:translateX(6px)} }
+/* Hover non-active: brighten + tiny lift, NO x/y change so no intersection */
+.fcard:not(.active):hover{
+  filter:brightness(1.65) drop-shadow(0 4px 12px rgba(0,0,0,.4));}
 
-/* ── Scroll track ── */
-.folders-track-wrap { position: relative; overflow: hidden; }
-.folders-track-wrap::before,
-.folders-track-wrap::after {
-  content: ''; position: absolute; top: 0; bottom: 0;
-  width: 90px; z-index: 10; pointer-events: none;
-}
-.folders-track-wrap::before { left:  0; background: linear-gradient( 90deg, var(--fade-edge), transparent); }
-.folders-track-wrap::after  { right: 0; background: linear-gradient(-90deg, var(--fade-edge), transparent); }
-.folders-track {
-  display: flex; gap: 18px; padding: 16px 90px 36px;
-  overflow-x: auto; scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  cursor: grab; user-select: none; scrollbar-width: none;
-}
-.folders-track::-webkit-scrollbar { display: none; }
-.folders-track.dragging { cursor: grabbing; }
+/* Active card: slide LEFT out of stack, face front (scaleX back to 1), lift */
+.fcard.active{
+  transform:translate(-60px, 10px) scaleX(1) scale(1.04) !important;
+  z-index:50 !important;
+  filter:brightness(1.18) !important;
+  box-shadow:0 28px 64px rgba(0,0,0,.6), 0 0 0 1.5px var(--ar), 0 0 44px rgba(99,102,241,.28);}
 
-/* ── Folder card ── */
-.folder {
-  flex: 0 0 330px; scroll-snap-align: start;
-  background: var(--folder-bg); border: 1px solid var(--yellow-border);
-  border-radius: 14px; overflow: hidden;
-  transition: transform .35s cubic-bezier(.34,1.2,.64,1),
-              box-shadow .35s ease, border-color .35s ease, background .35s ease;
-  position: relative; display: flex; flex-direction: column;
-}
-/* top tab accent */
-.folder::before {
-  content: ''; position: absolute; top: 0; left: 22px;
-  width: 52px; height: 3px;
-  background: var(--yellow); border-radius: 0 0 3px 3px;
-  opacity: 0; transition: opacity .3s;
-}
-.folder:hover {
-  border-color: var(--yellow); transform: translateY(-5px);
-  box-shadow: 0 18px 55px rgba(0,0,0,.12), 0 0 0 1px var(--yellow-glow);
-}
-.folder:hover::before { opacity: 1; }
-.folder.open {
-  border-color: var(--yellow); background: var(--folder-open);
-  transform: translateY(-8px);
-  box-shadow: 0 22px 65px rgba(0,0,0,.18), 0 0 0 1px var(--yellow-glow);
-}
-.folder.open::before { opacity: 1; }
+.fcard-face{width:100%;height:100%;
+  background:linear-gradient(155deg,rgba(26,26,40,.98),rgba(12,12,22,.99));
+  border:1px solid rgba(255,255,255,.11);border-radius:10px;overflow:hidden;position:relative;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 8px 28px rgba(0,0,0,.55);}
+.fcard-face::before{content:'';position:absolute;inset:0;
+  background:linear-gradient(130deg,rgba(255,255,255,.06) 0%,transparent 40%,rgba(255,255,255,.02) 65%,transparent);
+  pointer-events:none;z-index:1;}
 
-/* folder internals */
-.folder-top { padding: 22px 22px 18px; cursor: pointer; }
-.folder-icon-row {
-  display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;
-}
-.f-icon { width: 42px; height: 35px; }
-.folder-num {
-  font-family: 'JetBrains Mono', monospace; font-size: 10px;
-  color: var(--muted); letter-spacing: .08em;
-  background: var(--chip-bg); padding: 3px 8px;
-  border-radius: 4px; border: 1px solid var(--border);
+/* Coloured tab */
+.fcard-tab{position:absolute;right:0;top:50%;transform:translateY(-50%);
+  width:4px;height:52px;border-radius:0 4px 4px 0;z-index:3;
+  transition:height .25s ease,width .25s ease;}
+.fcard:hover .fcard-tab,.fcard.active .fcard-tab{width:5px;height:70px;}
+.fcard:nth-child(1) .fcard-tab{background:#6366f1;box-shadow:2px 0 12px rgba(99,102,241,.95);}
+.fcard:nth-child(2) .fcard-tab{background:#06b6d4;box-shadow:2px 0 12px rgba(6,182,212,.95);}
+.fcard:nth-child(3) .fcard-tab{background:#10b981;box-shadow:2px 0 12px rgba(16,185,129,.95);}
+.fcard:nth-child(4) .fcard-tab{background:#f59e0b;box-shadow:2px 0 12px rgba(245,158,11,.95);}
+.fcard:nth-child(5) .fcard-tab{background:#ef4444;box-shadow:2px 0 12px rgba(239,68,68,.95);}
+.fcard:nth-child(6) .fcard-tab{background:#8b5cf6;box-shadow:2px 0 12px rgba(139,92,246,.95);}
+.fcard:nth-child(7) .fcard-tab{background:#ec4899;box-shadow:2px 0 12px rgba(236,72,153,.95);}
+
+/* Vertical label */
+.fcard-label{position:absolute;right:10px;top:50%;transform:translateY(-50%);
+  font-family:'JetBrains Mono',monospace;font-size:6.5px;color:rgba(255,255,255,.30);
+  letter-spacing:.14em;text-transform:uppercase;writing-mode:vertical-rl;
+  pointer-events:none;z-index:2;white-space:nowrap;transition:color .25s;}
+.fcard:hover .fcard-label,.fcard.active .fcard-label{color:rgba(255,255,255,.75);}
+
+/* Card mini content */
+.fcard-inner{position:absolute;inset:14px 22px 14px 14px;z-index:2;
+  display:flex;flex-direction:column;gap:4px;}
+.fcard-num{font-family:'JetBrains Mono',monospace;font-size:7px;color:rgba(255,255,255,.28);letter-spacing:.12em;}
+.fcard-title{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;
+  color:rgba(255,255,255,.70);line-height:1.28;margin-top:3px;}
+.fcard-lines{margin-top:auto;display:flex;flex-direction:column;gap:5px;}
+.fcard-line{height:1px;border-radius:1px;background:rgba(255,255,255,.09);}
+.fcard-line:nth-child(2){width:70%;}
+.fcard-line:nth-child(3){width:44%;}
+
+@media(max-width:860px){
+  .proj-row{flex-direction:column-reverse;gap:24px;min-height:auto;}
+  .proj-panel{width:100%!important;opacity:1!important;overflow:visible!important;}
+  .proj-panel.open .panel-card{width:100%;}
+  .panel-card{width:100%;margin-right:0;min-height:auto;}
+  .stack-wrap{min-width:auto;width:100%;height:440px;transform:none!important;}
 }
 
-/* ★ MAGIC UI BOLD TITLE */
-.folder-title {
-  font-family: 'Manrope', sans-serif;
-  font-size: 17px; font-weight: 800;
-  line-height: 1.18; letter-spacing: -.5px;
-  color: var(--text); margin-bottom: 9px;
-}
-.folder-teaser { font-size: 13px; color: var(--muted); font-weight: 300; line-height: 1.6; }
-.folder-tags { display: flex; flex-wrap: wrap; gap: 6px; padding: 0 22px 18px; }
-.f-tag {
-  font-family: 'JetBrains Mono', monospace; font-size: 10px;
-  padding: 3px 9px; border-radius: 4px;
-  background: var(--yellow-dim); border: 1px solid var(--yellow-border); color: var(--yellow);
-}
-.folder-toggle {
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 13px 22px; border-top: 1px solid var(--border); cursor: pointer;
-}
-.folder-toggle:hover { background: var(--chip-bg); }
-.toggle-label { font-size: 12px; font-weight: 500; color: var(--muted); letter-spacing: .03em; }
-.toggle-chevron {
-  width: 24px; height: 24px; border-radius: 50%;
-  background: var(--chip-bg); border: 1px solid var(--border);
-  display: flex; align-items: center; justify-content: center;
-}
-.toggle-chevron svg { transition: transform .3s ease; color: var(--muted); }
-.folder.open .toggle-chevron { background: var(--yellow-dim); border-color: var(--yellow-border); }
-.folder.open .toggle-chevron svg { transform: rotate(180deg); color: var(--yellow); }
+/* ── RESEARCH ── */
+.research{position:relative;z-index:2;padding:72px max(28px,4vw);
+  max-width:1120px;margin:0 auto;border-top:1px solid var(--bd);}
+.r-title{font-family:'Syne',sans-serif;font-size:clamp(26px,4vw,46px);
+  font-weight:800;letter-spacing:-1.5px;color:var(--tx);margin-bottom:8px;}
+.r-title em{font-style:italic;background:linear-gradient(135deg,var(--acc2),var(--gold));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.r-sub{font-size:14.5px;color:var(--tx2);line-height:1.76;max-width:400px;margin-bottom:40px;font-weight:400;}
+.r-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(168px,1fr));gap:10px;}
+.idea{padding:18px 15px;background:var(--sur);border:1px solid var(--bd);
+  border-radius:13px;position:relative;overflow:hidden;
+  transition:border-color .25s,transform .28s,box-shadow .28s;}
+.idea::after{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;
+  background:linear-gradient(90deg,transparent,var(--acc),transparent);opacity:0;transition:opacity .3s;}
+.idea:hover{border-color:var(--ar);transform:translateY(-4px);box-shadow:0 12px 24px rgba(0,0,0,.18);}
+.idea:hover::after{opacity:1;}
+.idea-ico{font-size:20px;margin-bottom:9px;}
+.idea-txt{font-size:13px;font-weight:500;color:var(--tx);line-height:1.52;}
 
-/* expand body */
-.folder-body { max-height: 0; overflow: hidden; transition: max-height .5s cubic-bezier(.4,0,.2,1); }
-.folder.open .folder-body { max-height: 900px; }
-.folder-body-inner {
-  padding: 18px 22px 22px; border-top: 1px solid var(--border);
-  display: flex; flex-direction: column; gap: 14px;
-}
-.folder-img {
-  width: 100%; border-radius: 9px; overflow: hidden;
-  border: 1px solid var(--border); aspect-ratio: 16/10;
-  background: var(--bg2); position: relative;
-}
-.folder-img img { width:100%; height:100%; object-fit:cover; display:block; transition: transform .5s; }
-.folder-img:hover img { transform: scale(1.05); }
-.folder-img-label {
-  position: absolute; bottom: 7px; left: 10px;
-  font-family: 'JetBrains Mono', monospace; font-size: 9px; color: var(--muted);
-}
-.folder-specs { display: flex; flex-direction: column; gap: 7px; }
-.spec { display: flex; gap: 10px; align-items: baseline; }
-.spec-k {
-  font-family: 'JetBrains Mono', monospace; font-size: 10px;
-  color: var(--yellow); min-width: 68px; letter-spacing: .05em; flex-shrink: 0;
-}
-.spec-v { font-size: 12px; color: var(--muted); line-height: 1.5; }
-.folder-desc-full {
-  font-size: 12px; color: var(--muted); font-weight: 300; line-height: 1.78;
-  border-top: 1px solid var(--border); padding-top: 13px;
-}
-.folder-gh {
-  display: inline-flex; align-items: center; gap: 7px;
-  font-family: 'JetBrains Mono', monospace; font-size: 11px;
-  color: var(--muted); text-decoration: none;
-  padding: 8px 14px; border: 1px solid var(--border);
-  border-radius: 7px; background: var(--gh-bg); margin-top: 2px;
-}
-.folder-gh:hover { color: var(--yellow); border-color: var(--yellow-border); background: var(--yellow-dim); }
+/* ── EDUCATION & CERTIFICATIONS ── */
+.edu-cert{position:relative;z-index:2;border-top:1px solid var(--bd);
+  padding:72px max(28px,4vw);max-width:1120px;margin:0 auto;}
+.ec-grid{display:grid;grid-template-columns:1fr 1fr;gap:52px;}
+@media(max-width:760px){.ec-grid{grid-template-columns:1fr;gap:36px;}}
+.ec-col-title{font-family:'Syne',sans-serif;font-size:clamp(18px,2.4vw,24px);
+  font-weight:800;letter-spacing:-.6px;color:var(--tx);margin-bottom:18px;
+  display:flex;align-items:center;gap:9px;}
+.ec-col-title svg{color:var(--acc2);flex-shrink:0;}
+.ec-item{display:flex;align-items:flex-start;gap:14px;padding:16px 18px;
+  background:var(--sur);border:1px solid var(--bd);border-radius:12px;
+  margin-bottom:10px;transition:border-color .25s,transform .22s;
+  position:relative;overflow:hidden;}
+.ec-item::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;
+  background:var(--acc2);border-radius:3px 0 0 3px;opacity:0;transition:opacity .25s;}
+.ec-item:hover{border-color:var(--ar);transform:translateX(4px);}
+.ec-item:hover::before{opacity:1;}
+.ec-icon{width:36px;height:36px;border-radius:9px;background:var(--ad);
+  border:1px solid var(--ar);display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;font-size:16px;}
+.ec-info{flex:1;min-width:0;}
+.ec-deg{font-size:13.5px;font-weight:700;color:var(--tx);line-height:1.3;}
+.ec-inst{font-size:11.5px;color:var(--tx2);margin-top:3px;font-weight:500;}
+.ec-meta{display:flex;align-items:center;gap:6px;margin-top:7px;flex-wrap:wrap;}
+.ec-year{font-family:'JetBrains Mono',monospace;font-size:9.5px;
+  color:var(--acc3);background:var(--ad);border:1px solid var(--ar);padding:2px 7px;border-radius:4px;}
+.ec-badge{font-family:'JetBrains Mono',monospace;font-size:9px;
+  color:var(--tx2);background:var(--chip);border:1px solid var(--bd2);padding:2px 7px;border-radius:4px;font-weight:500;}
+.cert-item{display:flex;align-items:flex-start;gap:14px;padding:16px 18px;
+  background:var(--sur);border:1px solid var(--bd);border-radius:12px;
+  margin-bottom:10px;transition:border-color .25s,transform .22s;
+  position:relative;overflow:hidden;}
+.cert-item::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;
+  background:var(--gold);border-radius:3px 0 0 3px;opacity:0;transition:opacity .25s;}
+.cert-item:hover{border-color:var(--gr);transform:translateX(4px);}
+.cert-item:hover::before{opacity:1;}
+.cert-icon{width:36px;height:36px;border-radius:9px;background:var(--gd);
+  border:1px solid var(--gr);display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;font-size:16px;}
+.cert-name{font-size:13.5px;font-weight:700;color:var(--tx);line-height:1.3;}
+.cert-by{font-size:11.5px;color:var(--tx2);margin-top:3px;font-weight:500;}
+.cert-meta{display:flex;align-items:center;gap:6px;margin-top:7px;flex-wrap:wrap;}
+.cert-yr{font-family:'JetBrains Mono',monospace;font-size:9.5px;
+  color:var(--gold);background:var(--gd);border:1px solid var(--gr);padding:2px 7px;border-radius:4px;}
+.cert-slot{display:flex;align-items:center;gap:12px;padding:14px 16px;
+  border:1.5px dashed var(--bd2);border-radius:12px;color:var(--tx3);
+  font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.07em;
+  margin-bottom:10px;transition:border-color .25s,color .25s;cursor:default;}
+.cert-slot:hover{border-color:var(--gr);color:var(--tx2);}
+.cert-slot-icon{width:28px;height:28px;border-radius:7px;background:var(--chip);
+  border:1px solid var(--bd2);display:flex;align-items:center;justify-content:center;
+  font-size:14px;flex-shrink:0;}
 
-/* GitHub SVG path (reusable) */
-.gh-path { fill: currentColor; }
+/* ── CONTACT ── */
+.contact{position:relative;z-index:2;padding:68px max(28px,4vw) 100px;
+  max-width:1120px;margin:0 auto;border-top:1px solid var(--bd);}
+.contact-in{display:flex;flex-direction:column;align-items:center;text-align:center;}
+.ct-kicker{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--acc2);
+  letter-spacing:.16em;text-transform:uppercase;margin-bottom:18px;}
+.ct-title{font-family:'Syne',sans-serif;font-size:clamp(34px,6vw,70px);
+  font-weight:800;letter-spacing:-2.5px;line-height:.92;color:var(--tx);margin-bottom:16px;}
+.ct-title em{font-style:italic;background:linear-gradient(135deg,var(--acc2),var(--gold));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.ct-sub{font-size:15px;color:var(--tx2);max-width:320px;margin-bottom:30px;line-height:1.8;font-weight:400;}
+.ct-pills{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;}
+.pill{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;
+  border-radius:980px;font-size:13px;font-weight:600;transition:all .25s;}
+.pill-a{background:var(--acc);color:#fff;}
+.pill-a:hover{transform:translateY(-2px);box-shadow:0 12px 32px var(--ag);filter:brightness(1.1);}
+.pill-b{background:var(--chip);color:var(--tx);border:1px solid var(--bd2);}
+.pill-b:hover{border-color:var(--ar);background:var(--ad);transform:translateY(-2px);}
 
-/* ══ RESEARCH ══ */
-.research-section {
-  position: relative; z-index: 2; padding: 100px 40px;
-  max-width: 1100px; margin: 0 auto;
-}
-@media(max-width:768px){ .research-section { padding: 80px 24px; } }
-.section-sub {
-  font-size: 15px; color: var(--muted); font-weight: 300;
-  max-width: 400px; margin-bottom: 48px; line-height: 1.7;
-}
-.ideas-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(190px,1fr)); gap: 13px; }
-.idea {
-  padding: 22px 20px; background: var(--idea-bg);
-  border: 1px solid var(--border); border-radius: 12px;
-  cursor: default; position: relative; overflow: hidden;
-}
-.idea::after {
-  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
-  background: linear-gradient(90deg,transparent,var(--yellow),transparent);
-  opacity: 0; transition: opacity .3s;
-}
-.idea:hover { border-color: var(--yellow-border); transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,0,0,.1); }
-.idea:hover::after { opacity: 1; }
-.idea-emoji { font-size: 22px; margin-bottom: 12px; display: block; }
-.idea-title { font-size: 13px; font-weight: 500; color: var(--text); line-height: 1.55; }
-
-/* ══ CONTACT ══ */
-.contact-section {
-  position: relative; z-index: 2; padding: 80px 40px 120px;
-  max-width: 1100px; margin: 0 auto; border-top: 1px solid var(--border);
-}
-@media(max-width:768px){ .contact-section { padding: 60px 24px 80px; } }
-.contact-wrap { display: flex; flex-direction: column; align-items: center; text-align: center; }
-.contact-cta {
-  font-family: 'Instrument Serif', serif;
-  font-size: clamp(38px,6.5vw,72px); letter-spacing: -2px; line-height: .98;
-  color: var(--text); margin-bottom: 20px;
-}
-.contact-cta em { font-style: italic; color: var(--yellow); }
-.contact-sub {
-  font-size: 15px; color: var(--muted); font-weight: 300;
-  margin-bottom: 36px; max-width: 340px; line-height: 1.7;
-}
-.contact-links { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
-.contact-link {
-  display: inline-flex; align-items: center; gap: 9px;
-  padding: 12px 22px; border-radius: 9px; text-decoration: none;
-  font-size: 13px; font-weight: 500;
-}
-.contact-link.email { background: var(--yellow); color: #fff; }
-[data-theme="dark"] .contact-link.email { color: #0c0c0c; }
-.contact-link.email:hover { transform: translateY(-2px); filter: brightness(1.08); box-shadow: 0 8px 28px rgba(245,200,66,.3); }
-.contact-link.github {
-  background: var(--contact-gh-bg); color: var(--text); border: 1px solid var(--border2);
-}
-.contact-link.github:hover { border-color: var(--yellow-border); background: var(--yellow-dim); transform: translateY(-2px); }
-
-/* ══ FOOTER ══ */
-footer {
-  position: relative; z-index: 2;
-  border-top: 1px solid var(--border); padding: 22px 40px;
-  display: flex; align-items: center; justify-content: space-between;
-  color: var(--muted); font-size: 12px;
-}
-.footer-name { font-family: 'Instrument Serif', serif; font-size: 16px; color: var(--text); }
-.footer-name span { color: var(--yellow); }
-
-/* ══ ANIMATIONS ══ */
-@keyframes fadeUp { from{opacity:0;transform:translateY(26px)} to{opacity:1;transform:translateY(0)} }
-.reveal { opacity: 0; transform: translateY(20px); transition: opacity .7s ease, transform .7s ease; }
-.reveal.visible { opacity: 1; transform: none; }
-.reveal-stagger > * { opacity: 0; transform: translateY(16px); transition: opacity .5s ease, transform .5s ease; }
-.reveal-stagger.visible > * { opacity: 1; transform: none; }
-.reveal-stagger.visible > *:nth-child(1){ transition-delay:.04s }
-.reveal-stagger.visible > *:nth-child(2){ transition-delay:.09s }
-.reveal-stagger.visible > *:nth-child(3){ transition-delay:.14s }
-.reveal-stagger.visible > *:nth-child(4){ transition-delay:.19s }
-.reveal-stagger.visible > *:nth-child(5){ transition-delay:.24s }
-
-/* ══ RESPONSIVE ══ */
+/* ── FOOTER ── */
+footer{position:relative;z-index:2;border-top:1px solid var(--bd);
+  padding:18px max(28px,4vw);display:flex;align-items:center;
+  justify-content:space-between;font-size:12px;color:var(--tx3);}
+.f-brand{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:var(--tx);}
+.f-brand span{background:linear-gradient(135deg,var(--acc2),var(--gold));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
 @media(max-width:520px){
-  nav { padding: 0 20px; }
-  .nav-links a:not(.nav-tag) { display: none; }
-  footer { flex-direction: column; gap: 6px; text-align: center; }
+  footer{flex-direction:column;gap:5px;text-align:center;}
+  .h-btns{flex-direction:column;align-items:center;}
 }
+
+/* ── REVEAL ── */
+.rv{opacity:0;transform:translateY(18px);transition:opacity .65s ease,transform .65s ease;}
+.rv.in{opacity:1;transform:none;}
+.sg>*{opacity:0;transform:translateY(14px);transition:opacity .48s ease,transform .48s ease;}
+.sg.in>*:nth-child(1){transition-delay:.04s}
+.sg.in>*:nth-child(2){transition-delay:.09s}
+.sg.in>*:nth-child(3){transition-delay:.14s}
+.sg.in>*:nth-child(4){transition-delay:.19s}
+.sg.in>*:nth-child(5){transition-delay:.24s}
+.sg.in>*:nth-child(6){transition-delay:.29s}
+.sg.in>*{opacity:1;transform:none;}
 </style>
 </head>
 <body>
+<div class="mesh"></div>
 
-<div class="bg-grid"></div>
-<div class="bg-glow"></div>
-
-<!-- ═══ NAVBAR ═══ -->
+<!-- NAV -->
 <nav>
-  <a href="#" class="nav-logo"><div class="nav-dot"></div><b>MD Sulaiman</b></a>
-  <div class="nav-right">
-    <div class="nav-links">
-      <a href="#about">About</a>
-      <a href="#projects">Projects</a>
-      <a href="#research">Research</a>
-      <a href="#contact" class="nav-tag">Contact ↗</a>
-    </div>
-    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Switch theme">
-      <!-- Sun icon -->
-      <svg class="t-sun" width="15" height="15" viewBox="0 0 24 24" fill="none"
-           stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="12" cy="12" r="5"/>
-        <line x1="12" y1="1"  x2="12" y2="3"/>
-        <line x1="12" y1="21" x2="12" y2="23"/>
-        <line x1="4.22"  y1="4.22"  x2="5.64"  y2="5.64"/>
-        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-        <line x1="1"  y1="12" x2="3"  y2="12"/>
-        <line x1="21" y1="12" x2="23" y2="12"/>
-        <line x1="4.22"  y1="19.78" x2="5.64"  y2="18.36"/>
-        <line x1="18.36" y1="5.64"  x2="19.78" y2="4.22"/>
-      </svg>
-      <!-- Moon icon -->
-      <svg class="t-moon" width="14" height="14" viewBox="0 0 24 24" fill="none"
-           stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
-      </svg>
-    </button>
+  <a href="#" class="nav-logo"><div class="nav-orb"></div>Mohammed Sulaiman</a>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#impact">Impact</a>
+    <a href="#research">Research</a>
+    <a href="#education">Education</a>
+    <a href="#contact" class="nav-cta">Contact ↗</a>
   </div>
+  <button class="tbtn" id="themeBtn" aria-label="Toggle theme">
+    <svg class="ic-sun" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+      <circle cx="12" cy="12" r="5"/>
+      <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+      <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+    </svg>
+    <svg class="ic-moon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+      <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+    </svg>
+  </button>
 </nav>
 
-<!-- ═══ HERO ═══ -->
+<!-- HERO -->
 <section class="hero">
-  <div class="hero-eyebrow"><span>⚡</span> Hardware Inventor · IoT Researcher</div>
-  <h1>I build<br><em>things</em> that<br>sense the world</h1>
-  <p class="hero-desc">
-    An <strong>inventor at heart</strong> — constantly experimenting, prototyping, and pushing
-    the edges of <strong>IoT and embedded hardware</strong>. Currently exploring low-power
-    sensing and biomedical systems.
-  </p>
-  <div class="hero-ctas">
-    <a href="#projects" class="btn-primary">View Projects →</a>
-    <a href="#contact"  class="btn-secondary">Get in Touch</a>
+  <div class="h-badge"><div class="h-dot"></div>Research Engineer · Inventor · Experimental</div>
+  <h1 class="h-name">Mohammed<br><span class="grad">Sulaiman</span></h1>
+  <div class="h-roles">
+    <span class="h-role a">Research Engineer</span>
+    <span class="h-role g">Inventor</span>
+    <span class="h-role">Experimental</span>
+    <span class="h-role">Physics &amp; Electronics</span>
   </div>
-  <div class="hero-stack">
-    <span class="stack-label">Stack</span>
-    <span class="stack-chip">ESP32</span>
-    <span class="stack-chip">NFC</span>
-    <span class="stack-chip">IMU</span>
-    <span class="stack-chip">MAX30102</span>
-    <span class="stack-chip">EOG</span>
-    <span class="stack-chip">ENS160</span>
-    <span class="stack-chip">I²C</span>
+  <p class="h-pitch">I don't just build — I <strong>experiment, question, and invent.</strong> Every device starts as a hypothesis. End-to-end across <strong>biomedical wearables, quantum computing</strong> and smart sensing. Blank PCB to field-tested prototype. Quantum gates to real IBM hardware.</p>
+  <div class="h-btns">
+    <a href="#projects" class="btn-a">View Inventions →</a>
+    <a href="#contact" class="btn-g">Let's Collaborate</a>
   </div>
-  <div class="hero-scroll">
-    <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
+  <div class="h-stack">
+    <span class="stk-lbl">Stack</span>
+    <span class="chip">ESP32</span><span class="chip">NFC</span><span class="chip">IMU</span>
+    <span class="chip">MAX30102</span><span class="chip">Qiskit</span>
+    <span class="chip">EasyEDA</span><span class="chip">Fusion 360</span><span class="chip">I²C · SPI</span>
+  </div>
+  <div class="scroll-c">
+    <div class="scroll-m"><div class="scroll-d"></div></div>
+    <span class="scroll-t">Scroll</span>
   </div>
 </section>
 
-<!-- ═══ ABOUT ═══ -->
-<div id="about" class="about-strip reveal">
+<!-- ABOUT -->
+<div id="about" class="about rv">
   <div>
-    <div class="about-label">Who I am</div>
-    <h2 class="about-heading">Inventor.<br><em>Experimenter.</em><br>Researcher.</h2>
+    <div class="kicker">Who I Am</div>
+    <h2 class="sec-title">Research.<br><em>Invent.</em><br>Explore.</h2>
   </div>
   <div>
-    <p class="about-text">
-      I'm an <strong>independent hardware researcher</strong> who loves taking an idea from a
-      blank PCB to a working prototype. I believe the best way to learn is to
-      <strong>build real things</strong> — then break them, iterate, and build again.<br><br>
-      Currently <strong>exploring IoT and hardware</strong> — specifically low-power sensing,
-      wireless data transmission, and biomedical embedded systems. Actively looking to
-      <strong>collaborate on research</strong> and push these ideas further into the real world.
-    </p>
-    <div class="about-stats">
-      <div class="stat-box"><div class="stat-box-num">6+</div><div class="stat-box-label">Hardware Prototypes</div></div>
-      <div class="stat-box"><div class="stat-box-num">IoT</div><div class="stat-box-label">Primary Focus</div></div>
-      <div class="stat-box"><div class="stat-box-num">NFC</div><div class="stat-box-label">Wireless Specialty</div></div>
-      <div class="stat-box"><div class="stat-box-num">OSS</div><div class="stat-box-label">Open Source</div></div>
+    <div class="about-body">
+      <p>I'm <strong>Mohammed Sulaiman</strong> — Research Engineer, MSc Physicist, and inventor. Not just a builder — an <strong>experimenter</strong> working from first principles. I start with a question nobody has cleanly answered, then design, prototype, and test until I have a device that does something new.</p>
+      <p>Work spans <strong>biomedical wearables</strong> (SpO₂, EOG, IMU rehab), <strong>medical NFC sensing</strong>, <strong>quantum computing</strong> on real IBM hardware, and <strong>environmental IoT</strong>. Every project: EasyEDA schematic → PCB → firmware → Fusion 360 enclosure → 3D print → field test.</p>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="stat-n">7+</div><div class="stat-l">Prototypes Built</div></div>
+      <div class="stat"><div class="stat-n">2</div><div class="stat-l">MSME Ideas Selected</div></div>
+      <div class="stat"><div class="stat-n">IoT</div><div class="stat-l">Primary Domain</div></div>
+      <div class="stat"><div class="stat-n">QC</div><div class="stat-l">IBM Quantum</div></div>
     </div>
   </div>
 </div>
 
-<!-- ═══ PROJECTS ═══ -->
-<section id="projects" class="projects-section">
-  <div class="projects-header reveal">
+<!-- GOV / MSME IMPACT -->
+<div id="impact" class="impact rv">
+  <div class="kicker">Government &amp; Industry Recognition</div>
+  <h2 class="sec-title">Policy <em>Ideas</em> &amp; MSME <em>Projects</em></h2>
+  <p class="r-sub" style="margin-top:10px;margin-bottom:0;">Proposed multiple government project ideas; two MSME concepts were selected and are being executed in collaboration with college students.</p>
+
+  <div class="impact-grid sg">
+
+    <!-- MSME SELECTED 1 -->
+    <!-- ═══════════════════════════════════════════════════════════
+         MSME PROJECT 1 — fill in details below when ready
+         Replace the placeholder text with actual project name, description, collaborators, etc.
+         ═══════════════════════════════════════════════════════════ -->
+    <div class="impact-card msme">
+      <div class="impact-badge msme">🏭 MSME · Gov Selected</div>
+      <div class="impact-title">
+        <!-- PROJECT NAME → replace below -->
+        MSME Project One — FlameGuard 180
+      </div>
+      <div class="impact-desc">
+        <!-- PROJECT DESCRIPTION → replace below -->
+        Advanced Fire Suppression Technology system designed for residential and commercial environments. Developed in collaboration with college students.
+      </div>
+      <div class="impact-meta">
+        <!-- TAGS → add/remove as needed -->
+        <span class="impact-tag">Gov Selected</span>
+        <span class="impact-tag">MSME</span>
+        <span class="impact-tag"><!-- Year → e.g. 2024 --></span>
+      </div>
+    </div>
+
+    <!-- MSME SELECTED 2 -->
+    <!-- ═══════════════════════════════════════════════════════════
+         MSME PROJECT 2 — fill in details below when ready
+         ═══════════════════════════════════════════════════════════ -->
+    <div class="impact-card msme">
+      <div class="impact-badge msme">🏭 MSME · Gov Selected</div>
+      <div class="impact-title">
+        <!-- PROJECT NAME → replace below -->
+        MSME Project Two — Gut Revolution
+      </div>
+      <div class="impact-desc">
+        <!-- PROJECT DESCRIPTION → replace below -->
+        Revolutionizing Digestive Health with Vibrating Colon Capsules. Will be developing in collaboration with college students.
+      </div>
+      <div class="impact-meta">
+        <span class="impact-tag">Gov Selected</span>
+        <span class="impact-tag">MSME</span>
+        <span class="impact-tag"><!-- Year → e.g. 2024 --></span>
+      </div>
+    </div>
+
+    <!-- OTHER GOV IDEAS — add more cards here following same pattern -->
+    <!-- ═══════════════════════════════════════════════════════════
+         ADDITIONAL GOV PROPOSALS — copy an impact-card block below
+         Use class="impact-card gov" for government proposals
+         Use class="impact-card msme" for MSME-selected ones
+         ═══════════════════════════════════════════════════════════ -->
+
+  </div>
+</div>
+
+<!-- PROJECTS -->
+<section id="projects" class="projects">
+  <div class="proj-hdr rv">
     <div>
-      <div class="section-eyebrow">Research Portfolio</div>
-      <h2 class="section-h">Projects</h2>
+      <div class="proj-eyebrow">Research Portfolio</div>
+      <div class="proj-title"><span class="sm">my</span><span class="big">Inventions</span></div>
     </div>
-    <div class="projects-hint">Drag or scroll to explore <span class="hint-arr">→→</span></div>
+    <div class="proj-hint"><span class="hint-arr">→</span>&nbsp;click a file to open</div>
   </div>
+  <div class="proj-zone">
+    <div class="proj-row" id="projRow">
 
-  <div class="folders-track-wrap">
-    <div class="folders-track" id="track">
-
-      <!-- ── FOLDER 01 ── -->
-      <div class="folder">
-        <div class="folder-top" onclick="toggleFolder(this.closest('.folder'))">
-          <div class="folder-icon-row">
-            <svg class="f-icon" viewBox="0 0 44 36" fill="none">
-              <path d="M2 8C2 6.34 3.34 5 5 5H17L22 10H39C40.66 10 42 11.34 42 13V31C42 32.66 40.66 34 39 34H5C3.34 34 2 32.66 2 31V8Z" fill="var(--yellow-dim)" stroke="var(--yellow)" stroke-width="1.3"/>
-              <path d="M2 15H42" stroke="var(--yellow)" stroke-width="0.7" opacity="0.4"/>
-            </svg>
-            <span class="folder-num">01 / 06</span>
+      <!-- LEFT: content panel -->
+      <div class="proj-panel" id="projPanel">
+        <div class="panel-card" id="panelCard">
+          <button class="pan-close" onclick="closePanel()">✕</button>
+          <div class="pan-img" id="panImg">
+            <div class="pan-placeholder" id="panPh">—</div>
+            <img id="panImgEl" src="" alt="" style="display:none">
           </div>
-          <div class="folder-title">WildGuard Self-Defense Taser</div>
-          <div class="folder-teaser">Telescopic taser extending up to 3 feet with dual safety locks and LED indicators.</div>
-        </div>
-        <div class="folder-tags">
-          <span class="f-tag">hardware</span>
-          <span class="f-tag">safety</span>
-          <span class="f-tag">telescopic</span>
-        </div>
-        <div class="folder-toggle" onclick="toggleFolder(this.closest('.folder'))">
-          <span class="toggle-label">Open folder</span>
-          <div class="toggle-chevron">
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-              <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-        </div>
-        <div class="folder-body">
-          <div class="folder-body-inner">
-            <div class="folder-img">
-              <img src="docs/images/Wildguard P1.jpg" alt="WildGuard"
-                   onerror="this.src='https://placehold.co/600x375/131108/f5c842?text=WildGuard+P1'">
-              <span class="folder-img-label">wildguard_prototype_v1.jpg</span>
-            </div>
-            <div class="folder-specs">
-              <div class="spec"><span class="spec-k">RANGE</span><span class="spec-v">Telescopic rod up to 3 feet</span></div>
-              <div class="spec"><span class="spec-k">SAFETY</span><span class="spec-v">Dual safety lock + LED indicators</span></div>
-              <div class="spec"><span class="spec-k">OUTPUT</span><span class="spec-v">High-voltage taser discharge</span></div>
-            </div>
-            <p class="folder-desc-full">Compact self-defense device integrating a telescopic rod and high-voltage taser module. Dual safety locks prevent accidental discharge. Field tested for durability and real-world usability.</p>
-            <a href="https://github.com/Amd-Sulaiman" target="_blank" class="folder-gh">
-              <svg width="13" height="13" viewBox="0 0 24 24"><path class="gh-path" d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
-              github.com/Amd-Sulaiman
-            </a>
+          <div class="pan-body">
+            <div class="pan-num"  id="panNum"></div>
+            <div class="pan-title" id="panTitle"></div>
+            <div class="pan-specs" id="panSpecs"></div>
+            <div class="pan-sep"></div>
+            <p class="pan-desc" id="panDesc"></p>
+            <div class="pan-tags" id="panTags"></div>
           </div>
         </div>
       </div>
 
-      <!-- ── FOLDER 02 ── -->
-      <div class="folder">
-        <div class="folder-top" onclick="toggleFolder(this.closest('.folder'))">
-          <div class="folder-icon-row">
-            <svg class="f-icon" viewBox="0 0 44 36" fill="none">
-              <path d="M2 8C2 6.34 3.34 5 5 5H17L22 10H39C40.66 10 42 11.34 42 13V31C42 32.66 40.66 34 39 34H5C3.34 34 2 32.66 2 31V8Z" fill="var(--yellow-dim)" stroke="var(--yellow)" stroke-width="1.3"/>
-              <path d="M2 15H42" stroke="var(--yellow)" stroke-width="0.7" opacity="0.4"/>
-            </svg>
-            <span class="folder-num">02 / 06</span>
-          </div>
-          <div class="folder-title">Ankle Rehabilitation Monitor</div>
-          <div class="folder-teaser">Wearable ESP32-S3 + IMU device for real-time ankle motion tracking post-surgery.</div>
-        </div>
-        <div class="folder-tags">
-          <span class="f-tag">ESP32-S3</span>
-          <span class="f-tag">IMU</span>
-          <span class="f-tag">wearable</span>
-          <span class="f-tag">medical</span>
-        </div>
-        <div class="folder-toggle" onclick="toggleFolder(this.closest('.folder'))">
-          <span class="toggle-label">Open folder</span>
-          <div class="toggle-chevron">
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-              <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-        </div>
-        <div class="folder-body">
-          <div class="folder-body-inner">
-            <div class="folder-img">
-              <img src="docs/images/Prototype P2.jpg" alt="Ankle Rehab"
-                   onerror="this.src='https://placehold.co/600x375/131108/f5c842?text=Prototype+P2'">
-              <span class="folder-img-label">ankle_rehab_wearable_v1.jpg</span>
+      <!-- RIGHT: 3D file stack -->
+      <div class="stack-wrap" id="stackWrap">
+        <div class="file-stack" id="fileStack">
+
+          <div class="fcard" onclick="openFile(0)">
+            <div class="fcard-face">
+              <div class="fcard-inner"><div class="fcard-num">01 / 07</div><div class="fcard-title">WildGuard Taser</div><div class="fcard-lines"><div class="fcard-line"></div><div class="fcard-line"></div><div class="fcard-line"></div></div></div>
+              <div class="fcard-tab"></div><div class="fcard-label">WILDGUARD</div>
             </div>
-            <div class="folder-specs">
-              <div class="spec"><span class="spec-k">MCU</span><span class="spec-v">ESP32-S3 (Wi-Fi + BLE)</span></div>
-              <div class="spec"><span class="spec-k">SENSOR</span><span class="spec-v">IMU — accelerometer + gyroscope</span></div>
-              <div class="spec"><span class="spec-k">OUTPUT</span><span class="spec-v">Real-time motion data logging</span></div>
-              <div class="spec"><span class="spec-k">USE</span><span class="spec-v">Post-surgery rehabilitation</span></div>
-            </div>
-            <p class="folder-desc-full">Wearable IoT device for quantitative ankle motion tracking. Replaces subjective recovery assessments with precise gait and range-of-motion analytics for clinicians and patients.</p>
-            <a href="https://github.com/Amd-Sulaiman" target="_blank" class="folder-gh">
-              <svg width="13" height="13" viewBox="0 0 24 24"><path class="gh-path" d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
-              github.com/Amd-Sulaiman
-            </a>
           </div>
+
+          <div class="fcard" onclick="openFile(1)">
+            <div class="fcard-face">
+              <div class="fcard-inner"><div class="fcard-num">02 / 07</div><div class="fcard-title">Ankle Rehab Wearable</div><div class="fcard-lines"><div class="fcard-line"></div><div class="fcard-line"></div><div class="fcard-line"></div></div></div>
+              <div class="fcard-tab"></div><div class="fcard-label">ANKLE_REHAB</div>
+            </div>
+          </div>
+
+          <div class="fcard" onclick="openFile(2)">
+            <div class="fcard-face">
+              <div class="fcard-inner"><div class="fcard-num">03 / 07</div><div class="fcard-title">NFC Temp Monitor</div><div class="fcard-lines"><div class="fcard-line"></div><div class="fcard-line"></div><div class="fcard-line"></div></div></div>
+              <div class="fcard-tab"></div><div class="fcard-label">NFC_TEMP</div>
+            </div>
+          </div>
+
+          <div class="fcard" onclick="openFile(3)">
+            <div class="fcard-face">
+              <div class="fcard-inner"><div class="fcard-num">04 / 07</div><div class="fcard-title">EOG Blink Interface</div><div class="fcard-lines"><div class="fcard-line"></div><div class="fcard-line"></div><div class="fcard-line"></div></div></div>
+              <div class="fcard-tab"></div><div class="fcard-label">EOG_HMI</div>
+            </div>
+          </div>
+
+          <div class="fcard" onclick="openFile(4)">
+            <div class="fcard-face">
+              <div class="fcard-inner"><div class="fcard-num">05 / 07</div><div class="fcard-title">Air Quality Hub</div><div class="fcard-lines"><div class="fcard-line"></div><div class="fcard-line"></div><div class="fcard-line"></div></div></div>
+              <div class="fcard-tab"></div><div class="fcard-label">AIR_QUAL</div>
+            </div>
+          </div>
+
+          <div class="fcard" onclick="openFile(5)">
+            <div class="fcard-face">
+              <div class="fcard-inner"><div class="fcard-num">06 / 07</div><div class="fcard-title">SCD Glove Monitor</div><div class="fcard-lines"><div class="fcard-line"></div><div class="fcard-line"></div><div class="fcard-line"></div></div></div>
+              <div class="fcard-tab"></div><div class="fcard-label">SCD_GLOVE</div>
+            </div>
+          </div>
+
+          <div class="fcard" onclick="openFile(6)">
+            <div class="fcard-face">
+              <div class="fcard-inner"><div class="fcard-num">07 / 07</div><div class="fcard-title">Quantum Cryptography</div><div class="fcard-lines"><div class="fcard-line"></div><div class="fcard-line"></div><div class="fcard-line"></div></div></div>
+              <div class="fcard-tab"></div><div class="fcard-label">QUANTUM</div>
+            </div>
+          </div>
+
         </div>
       </div>
 
-      <!-- ── FOLDER 03 ── -->
-      <div class="folder">
-        <div class="folder-top" onclick="toggleFolder(this.closest('.folder'))">
-          <div class="folder-icon-row">
-            <svg class="f-icon" viewBox="0 0 44 36" fill="none">
-              <path d="M2 8C2 6.34 3.34 5 5 5H17L22 10H39C40.66 10 42 11.34 42 13V31C42 32.66 40.66 34 39 34H5C3.34 34 2 32.66 2 31V8Z" fill="var(--yellow-dim)" stroke="var(--yellow)" stroke-width="1.3"/>
-              <path d="M2 15H42" stroke="var(--yellow)" stroke-width="0.7" opacity="0.4"/>
-            </svg>
-            <span class="folder-num">03 / 06</span>
-          </div>
-          <div class="folder-title">Medical NFC Temperature Monitor</div>
-          <div class="folder-teaser">ESP32 + TMP117 + ST25DV NFC tag with live dashboard and smartphone read.</div>
-        </div>
-        <div class="folder-tags">
-          <span class="f-tag">NFC</span>
-          <span class="f-tag">ESP32</span>
-          <span class="f-tag">TMP117</span>
-          <span class="f-tag">healthcare</span>
-        </div>
-        <div class="folder-toggle" onclick="toggleFolder(this.closest('.folder'))">
-          <span class="toggle-label">Open folder</span>
-          <div class="toggle-chevron">
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-              <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-        </div>
-        <div class="folder-body">
-          <div class="folder-body-inner">
-            <div class="folder-img">
-              <img src="docs/images/Prototype P3.jpg" alt="NFC Temp"
-                   onerror="this.src='https://placehold.co/600x375/131108/f5c842?text=Prototype+P3'">
-              <span class="folder-img-label">nfc_temp_monitor_v1.jpg</span>
-            </div>
-            <div class="folder-specs">
-              <div class="spec"><span class="spec-k">MCU</span><span class="spec-v">ESP32 with Wi-Fi</span></div>
-              <div class="spec"><span class="spec-k">SENSOR</span><span class="spec-v">TMP117 — ±0.1°C precision</span></div>
-              <div class="spec"><span class="spec-k">NFC</span><span class="spec-v">ST25DV64KC via I²C + NDEF</span></div>
-              <div class="spec"><span class="spec-k">VARIANTS</span><span class="spec-v">Cold chain, patient skin patch</span></div>
-            </div>
-            <p class="folder-desc-full">Healthcare data logging with smartphone NFC retrieval and live web dashboard. Modifiable for cold chain logistics or wearable skin-patch patient monitoring.</p>
-            <a href="https://github.com/Amd-Sulaimanlaiman" target="_blank" class="folder-gh">
-              <svg width="13" height="13" viewBox="0 0 24 24"><path class="gh-path" d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
-              github.com/Amd-Sulaimanlaiman
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- ── FOLDER 04 ── -->
-      <div class="folder">
-        <div class="folder-top" onclick="toggleFolder(this.closest('.folder'))">
-          <div class="folder-icon-row">
-            <svg class="f-icon" viewBox="0 0 44 36" fill="none">
-              <path d="M2 8C2 6.34 3.34 5 5 5H17L22 10H39C40.66 10 42 11.34 42 13V31C42 32.66 40.66 34 39 34H5C3.34 34 2 32.66 2 31V8Z" fill="var(--yellow-dim)" stroke="var(--yellow)" stroke-width="1.3"/>
-              <path d="M2 15H42" stroke="var(--yellow)" stroke-width="0.7" opacity="0.4"/>
-            </svg>
-            <span class="folder-num">04 / 06</span>
-          </div>
-          <div class="folder-title">EOG Blink-Control Interface</div>
-          <div class="folder-teaser">Eye-blink signals for hands-free HMI. Internally extensible to EEG and EMG.</div>
-        </div>
-        <div class="folder-tags">
-          <span class="f-tag">EOG</span>
-          <span class="f-tag">biomedical</span>
-          <span class="f-tag">assistive</span>
-          <span class="f-tag">HMI</span>
-        </div>
-        <div class="folder-toggle" onclick="toggleFolder(this.closest('.folder'))">
-          <span class="toggle-label">Open folder</span>
-          <div class="toggle-chevron">
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-              <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-        </div>
-        <div class="folder-body">
-          <div class="folder-body-inner">
-            <div class="folder-img">
-              <img src="docs/images/EOG P4.jpg" alt="EOG Interface"
-                   onerror="this.src='https://placehold.co/600x375/131108/f5c842?text=EOG+P4'">
-              <span class="folder-img-label">eog_blink_interface_v1.jpg</span>
-            </div>
-            <div class="folder-specs">
-              <div class="spec"><span class="spec-k">METHOD</span><span class="spec-v">Electrooculography signal detection</span></div>
-              <div class="spec"><span class="spec-k">INPUT</span><span class="spec-v">Eye-blink events</span></div>
-              <div class="spec"><span class="spec-k">OUTPUT</span><span class="spec-v">Hands-free device control</span></div>
-              <div class="spec"><span class="spec-k">EXTEND</span><span class="spec-v">EEG &amp; EMG modifiable internally</span></div>
-            </div>
-            <p class="folder-desc-full">Electrooculography control system for hands-free HMI in assistive technology. Designed to be internally tweakable to support EEG brain-computer and EMG muscle-control interfaces.</p>
-            <a href="https://github.com/Amd-Sulaimanlaiman" target="_blank" class="folder-gh">
-              <svg width="13" height="13" viewBox="0 0 24 24"><path class="gh-path" d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
-              github.com/Amd-Sulaimanlaiman
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- ── FOLDER 05 ── -->
-      <div class="folder">
-        <div class="folder-top" onclick="toggleFolder(this.closest('.folder'))">
-          <div class="folder-icon-row">
-            <svg class="f-icon" viewBox="0 0 44 36" fill="none">
-              <path d="M2 8C2 6.34 3.34 5 5 5H17L22 10H39C40.66 10 42 11.34 42 13V31C42 32.66 40.66 34 39 34H5C3.34 34 2 32.66 2 31V8Z" fill="var(--yellow-dim)" stroke="var(--yellow)" stroke-width="1.3"/>
-              <path d="M2 15H42" stroke="var(--yellow)" stroke-width="0.7" opacity="0.4"/>
-            </svg>
-            <span class="folder-num">05 / 06</span>
-          </div>
-          <div class="folder-title">Air Quality Smart Dashboard</div>
-          <div class="folder-teaser">ENS160 + AHT + ESP32 delivering live AQI data through an embedded web dashboard.</div>
-        </div>
-        <div class="folder-tags">
-          <span class="f-tag">ESP32</span>
-          <span class="f-tag">ENS160</span>
-          <span class="f-tag">AQI</span>
-          <span class="f-tag">dashboard</span>
-        </div>
-        <div class="folder-toggle" onclick="toggleFolder(this.closest('.folder'))">
-          <span class="toggle-label">Open folder</span>
-          <div class="toggle-chevron">
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-              <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-        </div>
-        <div class="folder-body">
-          <div class="folder-body-inner">
-            <div class="folder-img">
-              <img src="docs/images/AirQuality P5.jpg" alt="Air Quality"
-                   onerror="this.src='https://placehold.co/600x375/131108/f5c842?text=AirQuality+P5'">
-              <span class="folder-img-label">air_quality_monitor_v1.jpg</span>
-            </div>
-            <div class="folder-specs">
-              <div class="spec"><span class="spec-k">MCU</span><span class="spec-v">ESP32 embedded web server</span></div>
-              <div class="spec"><span class="spec-k">GAS</span><span class="spec-v">ENS160 — eCO₂, TVOC, AQI</span></div>
-              <div class="spec"><span class="spec-k">ENV</span><span class="spec-v">AHT — temperature &amp; humidity</span></div>
-              <div class="spec"><span class="spec-k">DISPLAY</span><span class="spec-v">Live browser charts, no cloud needed</span></div>
-            </div>
-            <p class="folder-desc-full">Environmental monitoring with live browser dashboard. Tracks eCO₂, TVOC, temperature and humidity — accessible from any device on the local network without external services.</p>
-            <a href="https://github.com/Amd-Sulaiman" target="_blank" class="folder-gh">
-              <svg width="13" height="13" viewBox="0 0 24 24"><path class="gh-path" d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
-              github.com/Amd-Sulaiman
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- ── FOLDER 06 ── -->
-      <div class="folder">
-        <div class="folder-top" onclick="toggleFolder(this.closest('.folder'))">
-          <div class="folder-icon-row">
-            <svg class="f-icon" viewBox="0 0 44 36" fill="none">
-              <path d="M2 8C2 6.34 3.34 5 5 5H17L22 10H39C40.66 10 42 11.34 42 13V31C42 32.66 40.66 34 39 34H5C3.34 34 2 32.66 2 31V8Z" fill="var(--yellow-dim)" stroke="var(--yellow)" stroke-width="1.3"/>
-              <path d="M2 15H42" stroke="var(--yellow)" stroke-width="0.7" opacity="0.4"/>
-            </svg>
-            <span class="folder-num">06 / 06</span>
-          </div>
-          <div class="folder-title">Sickle Cell Disease Monitor</div>
-          <div class="folder-teaser">ESP32 + MAX30102 measuring SpO₂ and heart rate with real-time visualization.</div>
-        </div>
-        <div class="folder-tags">
-          <span class="f-tag">ESP32</span>
-          <span class="f-tag">MAX30102</span>
-          <span class="f-tag">SpO₂</span>
-          <span class="f-tag">biomedical</span>
-        </div>
-        <div class="folder-toggle" onclick="toggleFolder(this.closest('.folder'))">
-          <span class="toggle-label">Open folder</span>
-          <div class="toggle-chevron">
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-              <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-        </div>
-        <div class="folder-body">
-          <div class="folder-body-inner">
-            <div class="folder-img">
-              <img src="docs/images/SCD P6.jpg" alt="SCD Monitor"
-                   onerror="this.src='https://placehold.co/600x375/131108/f5c842?text=SCD+P6'">
-              <span class="folder-img-label">sickle_cell_monitor_v1.jpg</span>
-            </div>
-            <div class="folder-specs">
-              <div class="spec"><span class="spec-k">MCU</span><span class="spec-v">ESP32 with Wi-Fi streaming</span></div>
-              <div class="spec"><span class="spec-k">SENSOR</span><span class="spec-v">MAX30102 pulse oximeter + HR</span></div>
-              <div class="spec"><span class="spec-k">MEASURES</span><span class="spec-v">SpO₂ blood oxygen + BPM</span></div>
-              <div class="spec"><span class="spec-k">USE</span><span class="spec-v">Sickle cell complication detection</span></div>
-            </div>
-            <p class="folder-desc-full">Physiological monitoring for early detection of sickle cell complications. Continuous, accessible vitals with real-time visualization for patients and clinicians — no hospital equipment needed.</p>
-            <a href="https://github.com/Amd-Sulaiman" target="_blank" class="folder-gh">
-              <svg width="13" height="13" viewBox="0 0 24 24"><path class="gh-path" d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
-              github.com/Amd-Sulaiman
-            </a>
-          </div>
-        </div>
-      </div>
-
-    </div><!-- /track -->
-  </div><!-- /track-wrap -->
-</section>
-
-<!-- ═══ RESEARCH IDEAS ═══ -->
-<section id="research" class="research-section reveal">
-  <div class="section-eyebrow">What's Next</div>
-  <h2 class="section-h" style="margin-bottom:12px">
-    Research <span style="font-family:'Instrument Serif',serif;font-style:italic;color:var(--yellow)">Ideas</span>
-  </h2>
-  <p class="section-sub">Directions I'm actively thinking about and want to push further.</p>
-  <div class="ideas-grid reveal-stagger">
-    <div class="idea">
-      <span class="idea-emoji">⚡</span>
-      <div class="idea-title">Batteryless medical sensors via NFC energy harvesting</div>
-    </div>
-    <div class="idea">
-      <span class="idea-emoji">🩺</span>
-      <div class="idea-title">Continuous health monitoring wearable devices</div>
-    </div>
-    <div class="idea">
-      <span class="idea-emoji">🔋</span>
-      <div class="idea-title">Ultra low-power biomedical embedded systems</div>
-    </div>
-    <div class="idea">
-      <span class="idea-emoji">🧠</span>
-      <div class="idea-title">Neurological disorder detection via biosignals</div>
-    </div>
-    <div class="idea">
-      <span class="idea-emoji">🤖</span>
-      <div class="idea-title">AI-assisted biomedical sensing systems</div>
     </div>
   </div>
 </section>
 
-<!-- ═══ CONTACT ═══ -->
-<section id="contact" class="contact-section">
-  <div class="contact-wrap reveal">
-    <h2 class="contact-cta">Let's build<br>something <em>real.</em></h2>
-    <p class="contact-sub">Open to research collaborations, hardware experiments, and new ideas worth pursuing.</p>
-    <div class="contact-links">
-      <a href="mailto:mdsulaiman00786@gmail.com" class="contact-link email">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-          <polyline points="22,6 12,13 2,6"/>
-        </svg>
+<!-- RESEARCH -->
+<section id="research" class="research rv">
+  <div class="kicker">What's Next</div>
+  <h2 class="r-title">Research <em>Frontiers</em></h2>
+  <p class="r-sub">Directions I'm actively exploring — where physics, electronics, and invention intersect.</p>
+  <div class="r-grid sg">
+    <div class="idea"><div class="idea-ico">⚛️</div><div class="idea-txt">Quantum sensing for ultra-precise physical measurements</div></div>
+    <div class="idea"><div class="idea-ico">⚡</div><div class="idea-txt">Batteryless medical sensors via NFC energy harvesting</div></div>
+    <div class="idea"><div class="idea-ico">🧬</div><div class="idea-txt">Neurological disorder detection through biosignals</div></div>
+    <div class="idea"><div class="idea-ico">🩺</div><div class="idea-txt">Continuous health wearables with ultra-low power draw</div></div>
+    <div class="idea"><div class="idea-ico">🤖</div><div class="idea-txt">AI-assisted embedded diagnostic systems</div></div>
+    <div class="idea"><div class="idea-ico">🔭</div><div class="idea-txt">Post-classical cryptography and quantum communication</div></div>
+  </div>
+</section>
+
+<!-- EDUCATION & CERTIFICATIONS -->
+<div id="education" class="edu-cert rv">
+  <div class="kicker">Background &amp; Credentials</div>
+  <div class="ec-grid">
+
+    <!-- EDUCATION -->
+    <div>
+      <div class="ec-col-title">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3.333 1.667 8.667 1.667 12 0v-5"/></svg>
+        Education
+      </div>
+
+      <div class="ec-item">
+        <div class="ec-icon">🎓</div>
+        <div class="ec-info">
+          <div class="ec-deg">MSc Physics</div>
+          <div class="ec-inst">The American College, Madurai</div>
+          <div class="ec-meta">
+            <span class="ec-year">2019 – 2021</span>
+            <span class="ec-badge">Quantum Computing Thesis</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="ec-item">
+        <div class="ec-icon">🎓</div>
+        <div class="ec-info">
+          <div class="ec-deg">BSc Physics</div>
+          <div class="ec-inst">Jamal Mohamed College, Tiruchirappalli</div>
+          <div class="ec-meta">
+            <span class="ec-year">2016 – 2019</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CERTIFICATIONS -->
+    <div>
+      <div class="ec-col-title">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
+        Certifications
+      </div>
+
+      <!-- ═══════════════════════════════════════════════════════════
+           ADD YOUR CERTIFICATIONS HERE
+           Copy one cert-item block per certification:
+
+           <div class="cert-item">
+             <div class="cert-icon">🏅</div>
+             <div class="ec-info">
+               <div class="cert-name">CERTIFICATE NAME</div>
+               <div class="cert-by">ISSUING ORGANISATION</div>
+               <div class="cert-meta"><span class="cert-yr">YEAR</span></div>
+             </div>
+           </div>
+           ═══════════════════════════════════════════════════════════ -->
+
+      <div class="cert-slot"><div class="cert-slot-icon">＋</div>Certification — add details soon</div>
+      <div class="cert-slot"><div class="cert-slot-icon">＋</div>Certification — add details soon</div>
+      <div class="cert-slot"><div class="cert-slot-icon">＋</div>Certification — add details soon</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- CONTACT -->
+<section id="contact" class="contact">
+  <div class="contact-in rv">
+    <div class="ct-kicker">Open to Opportunities</div>
+    <h2 class="ct-title">Let's build<br>something <em>real.</em></h2>
+    <p class="ct-sub">Looking for R&amp;D roles, research collaborations, and hard problems worth solving.</p>
+    <div class="ct-pills">
+      <a href="mailto:mdsulaiman00786@gmail.com" class="pill pill-a">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
         mdsulaiman00786@gmail.com
       </a>
-      <a href="https://github.com/Amd-Sulaiman" target="_blank" class="contact-link github">
-        <svg width="15" height="15" viewBox="0 0 24 24"><path class="gh-path" d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
-        github.com/Amd-Sulaiman
+      <a href="https://github.com/Amd-Sulaiman" target="_blank" class="pill pill-b">
+        <svg width="14" height="14" viewBox="0 0 24 24"><path fill="currentColor" d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+        GitHub
+      </a>
+      <a href="https://linkedin.com/in/md-sulaiman" target="_blank" class="pill pill-b">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        LinkedIn
       </a>
     </div>
   </div>
 </section>
 
-<!-- ═══ FOOTER ═══ -->
+<!-- FOOTER -->
 <footer>
-  <div class="footer-name">MD Sulaiman <span>Research</span></div>
-  <div>© 2026 — Independent Hardware Research</div>
+  <div class="f-brand">Mohammed Sulaiman <span>· Research Engineer · Inventor</span></div>
+  <div>© 2026 — Experimental · Madurai, India</div>
 </footer>
 
 <script>
-/* ══ THEME TOGGLE ══ */
-const htmlEl = document.documentElement;
-const toggleBtn = document.getElementById('themeToggle');
-
-// Restore saved preference
-const savedTheme = localStorage.getItem('MD Sulaiman-theme');
-if (savedTheme) htmlEl.setAttribute('data-theme', savedTheme);
-
-toggleBtn.addEventListener('click', () => {
-  const current = htmlEl.getAttribute('data-theme');
-  const next = current === 'dark' ? 'light' : 'dark';
-  htmlEl.setAttribute('data-theme', next);
-  localStorage.setItem('MD Sulaiman-theme', next);
-});
-
-/* ══ FOLDER OPEN / CLOSE ══ */
-function toggleFolder(folder) {
-  const isOpen = folder.classList.contains('open');
-  // Close all folders first
-  document.querySelectorAll('.folder').forEach(f => {
-    f.classList.remove('open');
-    const lbl = f.querySelector('.toggle-label');
-    if (lbl) lbl.textContent = 'Open folder';
-  });
-  // Open the clicked one if it was closed
-  if (!isOpen) {
-    folder.classList.add('open');
-    const lbl = folder.querySelector('.toggle-label');
-    if (lbl) lbl.textContent = 'Close folder';
-    // Scroll it into center view
-    setTimeout(() => {
-      folder.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-    }, 60);
+const PD = [
+  {
+    "title": "WildGuard Self-Defense Taser",
+    "img": "docs/images/Wildguard P1.jpg",
+    "tags": [
+      "hardware",
+      "safety circuit",
+      "field-tested",
+      "custom PCB",
+      "3.7V taser"
+    ],
+    "specs": [
+      [
+        "RANGE",
+        "Telescopic rod extending up to 3 feet"
+      ],
+      [
+        "SAFETY",
+        "Dual safety lock + LED status indicators"
+      ],
+      [
+        "POWER",
+        "3.7 V taser discharge circuit"
+      ],
+      [
+        "STATUS",
+        "Fully field-tested for real-world durability"
+      ],
+      [
+        "ROLE",
+        "Solo design, circuit, fabrication, testing"
+      ]
+    ],
+    "desc": "Compact self-defence device built end-to-end — from schematic to field test. Integrates a telescopic rod and high-voltage taser module. Dual safety locks prevent accidental discharge. Custom PCB with LED state indicators."
+  },
+  {
+    "title": "Ankle Rehabilitation Wearable",
+    "img": "docs/images/Prototype P2.jpg",
+    "tags": [
+      "ESP32-S3",
+      "6-axis IMU",
+      "Wi-Fi",
+      "BLE",
+      "medical wearable",
+      "rehab"
+    ],
+    "specs": [
+      [
+        "MCU",
+        "ESP32-S3 — dual-mode Wi-Fi + BLE"
+      ],
+      [
+        "SENSOR",
+        "6-axis IMU — accelerometer + gyroscope"
+      ],
+      [
+        "OUTPUT",
+        "Real-time gait angle & motion analytics"
+      ],
+      [
+        "PROTOCOL",
+        "Wi-Fi dashboard + BLE for mobile sync"
+      ],
+      [
+        "USE CASE",
+        "Post-surgery ankle rehabilitation tracking"
+      ]
+    ],
+    "desc": "Replaces subjective physio assessments with quantitative ankle motion data. Tracks gait angles, range-of-motion, and recovery trends continuously. Data streamed over Wi-Fi to a clinician dashboard and via BLE to mobile apps."
+  },
+  {
+    "title": "Medical NFC Temperature Monitor",
+    "img": "docs/images/Prototype P3.jpg",
+    "tags": [
+      "NFC",
+      "ESP32",
+      "TMP117",
+      "ST25DV64KC",
+      "OLED",
+      "3D-printed ABS"
+    ],
+    "specs": [
+      [
+        "SENSOR",
+        "TMP117 — 0.1 deg C clinical-grade accuracy"
+      ],
+      [
+        "NFC IC",
+        "ST25DV64KC, NDEF records over I2C bus"
+      ],
+      [
+        "DISPLAY",
+        "0.96in OLED — simultaneous live readout"
+      ],
+      [
+        "ENCLOSURE",
+        "Custom ABS resin 3D-printed shell"
+      ],
+      [
+        "USE CASE",
+        "Contactless patient & cold-chain monitoring"
+      ]
+    ],
+    "desc": "Production-ready contactless patient monitoring device. A single NFC phone tap retrieves live temperature via NDEF — no app required. The OLED shows the same data locally in real-time. ABS resin 3D-printed enclosure gives a clinically presentable form factor."
+  },
+  {
+    "title": "EOG Blink-Control Interface",
+    "img": "docs/images/EOG P4.jpg",
+    "tags": [
+      "EOG",
+      "HMI",
+      "assistive tech",
+      "3D-printed ABS",
+      "EEG/EMG-adaptable"
+    ],
+    "specs": [
+      [
+        "METHOD",
+        "Electrooculography — eye movement voltage sensing"
+      ],
+      [
+        "CONTROL",
+        "Blink events to hands-free HMI commands"
+      ],
+      [
+        "OUTPUT",
+        "Live web signal visualisation dashboard"
+      ],
+      [
+        "FORM",
+        "Custom 3D-printed ABS wearable enclosure"
+      ],
+      [
+        "EXTEND",
+        "Adaptable to EEG brain-ctrl & EMG muscle-ctrl"
+      ]
+    ],
+    "desc": "Eye-blink signal interface giving full hands-free device control via electrooculography. Raw EOG signals processed into discrete blink events mapped to HMI commands. Live browser signal dashboard for monitoring and calibration."
+  },
+  {
+    "title": "Air Quality Smart Dashboard",
+    "img": "docs/images/AirQuality P5.jpg",
+    "tags": [
+      "ESP32",
+      "ENS160",
+      "AHT21",
+      "embedded web server",
+      "local-only",
+      "IoT"
+    ],
+    "specs": [
+      [
+        "GAS",
+        "ENS160 — eCO2 (ppm), TVOC (ppb), AQI index"
+      ],
+      [
+        "ENV",
+        "AHT21 — temperature & relative humidity"
+      ],
+      [
+        "SERVER",
+        "Browser dashboard hosted directly on ESP32"
+      ],
+      [
+        "ACCESS",
+        "Any LAN device — zero cloud dependency"
+      ],
+      [
+        "LATENCY",
+        "Real-time, no external routing overhead"
+      ]
+    ],
+    "desc": "Environmental monitoring system serving a live browser dashboard directly from the ESP32 — zero cloud dependency. Tracks eCO2, TVOC, AQI, temperature, and humidity in real-time. Any LAN device opens the dashboard instantly."
+  },
+  {
+    "title": "Sickle Cell Monitoring Glove",
+    "img": "docs/images/SCD P6.jpg",
+    "tags": [
+      "ESP32",
+      "MAX30102",
+      "SpO2",
+      "BPM",
+      "glove-embedded",
+      "biomedical",
+      "SCD"
+    ],
+    "specs": [
+      [
+        "FORM",
+        "All electronics fully embedded inside glove body"
+      ],
+      [
+        "SENSOR",
+        "MAX30102 — optical SpO2 + heart rate"
+      ],
+      [
+        "OUTPUT",
+        "Continuous real-time local web dashboard"
+      ],
+      [
+        "FOCUS",
+        "Sickle cell disease complication monitoring"
+      ],
+      [
+        "WIRING",
+        "Zero external cables — fully self-contained"
+      ]
+    ],
+    "desc": "ESP32 and MAX30102 pulse oximeter fully embedded inside a wearable glove — no external module, no protruding wires. Designed for accessible point-of-care monitoring of sickle cell disease where blood oxygen dips are clinically critical."
+  },
+  {
+    "title": "Quantum Computing & Cryptography",
+    "img": "",
+    "tags": [
+      "Qiskit",
+      "IBM Quantum",
+      "Bell pairs",
+      "Shor algorithm",
+      "Grover algorithm",
+      "MSc thesis"
+    ],
+    "specs": [
+      [
+        "PLATFORM",
+        "IBM Quantum — executed on real quantum hardware"
+      ],
+      [
+        "TOOLS",
+        "Python, Qiskit, Anaconda, Jupyter"
+      ],
+      [
+        "METHODS",
+        "Bell pairs, Hadamard gates, CNOT gates"
+      ],
+      [
+        "ALGOS",
+        "Shor factorisation + Grover search"
+      ],
+      [
+        "CONTEXT",
+        "MSc Physics final project — The American College, 2021"
+      ]
+    ],
+    "desc": "Quantum teleportation via Bell pair preparation and Hadamard/CNOT gate sequences — executed on real IBM Quantum hardware, not simulation. Implemented Shor integer factorisation and Grover quantum search to explore post-classical cryptographic vulnerability."
   }
+];
+const COLORS = ['#6366f1','#06b6d4','#10b981','#f59e0b','#ef4444','#8b5cf6','#ec4899'];
+let active = -1;
+
+// Base z-index for each card position (front=7 ... back=1)
+const BASE_Z = [7,6,5,4,3,2,1];
+
+function openFile(i) {
+  const p = PD[i], color = COLORS[i];
+  const panel = document.getElementById('projPanel');
+  const card  = document.getElementById('panelCard');
+  const wrap  = document.getElementById('stackWrap');
+  const cards = document.querySelectorAll('.fcard');
+
+  // Reset all z-indexes to base, then set active
+  cards.forEach((c, idx) => {
+    c.classList.toggle('active', idx === i);
+    c.style.zIndex = idx === i ? 50 : BASE_Z[idx];
+  });
+
+  card.style.setProperty('--pc', color);
+
+  document.getElementById('panNum').textContent   = 'PROJ — 0' + (i + 1) + ' / 07';
+  document.getElementById('panTitle').textContent = p.title;
+  document.getElementById('panDesc').textContent  = p.desc;
+  document.getElementById('panSpecs').innerHTML   = p.specs.map(([k, v]) =>
+    '<div class="pan-row"><span class="pan-key">' + k + '</span><span class="pan-val">' + v + '</span></div>'
+  ).join('');
+  document.getElementById('panTags').innerHTML = p.tags.map(t =>
+    '<span class="pan-tag">' + t + '</span>'
+  ).join('');
+
+  const img = document.getElementById('panImgEl');
+  const ph  = document.getElementById('panPh');
+  if (p.img) {
+    img.src = p.img; img.style.display = 'block'; ph.style.display = 'none';
+    img.onerror = () => { img.style.display = 'none'; ph.style.display = 'flex'; ph.textContent = p.title; };
+  } else {
+    img.style.display = 'none'; ph.style.display = 'flex'; ph.textContent = p.title;
+  }
+
+  panel.classList.add('open');
+  wrap.classList.add('shifted');
+  active = i;
 }
 
-/* ══ DRAG-TO-SCROLL on horizontal track ══ */
-const track = document.getElementById('track');
-let isDragging = false, dragStartX = 0, trackScrollLeft = 0;
+function closePanel() {
+  document.getElementById('projPanel').classList.remove('open');
+  document.getElementById('stackWrap').classList.remove('shifted');
+  const cards = document.querySelectorAll('.fcard');
+  cards.forEach((c, idx) => { c.classList.remove('active'); c.style.zIndex = BASE_Z[idx]; });
+  active = -1;
+}
 
-track.addEventListener('mousedown', e => {
-  isDragging = true;
-  track.classList.add('dragging');
-  dragStartX = e.pageX - track.offsetLeft;
-  trackScrollLeft = track.scrollLeft;
-});
-document.addEventListener('mouseup', () => {
-  isDragging = false;
-  track.classList.remove('dragging');
-});
-track.addEventListener('mousemove', e => {
-  if (!isDragging) return;
-  e.preventDefault();
-  const x = e.pageX - track.offsetLeft;
-  track.scrollLeft = trackScrollLeft - (x - dragStartX) * 1.3;
-});
-track.addEventListener('touchstart', e => {
-  dragStartX = e.touches[0].pageX - track.offsetLeft;
-  trackScrollLeft = track.scrollLeft;
-}, { passive: true });
-track.addEventListener('touchmove', e => {
-  const x = e.touches[0].pageX - track.offsetLeft;
-  track.scrollLeft = trackScrollLeft - (x - dragStartX);
-}, { passive: true });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closePanel(); });
 
-/* ══ SCROLL REVEAL ══ */
-const revealObserver = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) entry.target.classList.add('visible');
+// Hover z-index boost: hovered card rises above its immediate neighbours (no 3D needed)
+document.querySelectorAll('.fcard').forEach((card, idx) => {
+  card.addEventListener('mouseenter', () => {
+    if (!card.classList.contains('active')) {
+      card.style.zIndex = BASE_Z[idx] + 10;
+    }
+  });
+  card.addEventListener('mouseleave', () => {
+    if (!card.classList.contains('active')) {
+      card.style.zIndex = BASE_Z[idx];
+    }
+  });
+});
+
+// Theme
+const root = document.documentElement;
+document.getElementById('themeBtn').addEventListener('click', () => {
+  const n = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  root.setAttribute('data-theme', n);
+  localStorage.setItem('mds-theme', n);
+});
+const sv = localStorage.getItem('mds-theme');
+if (sv) root.setAttribute('data-theme', sv);
+
+// Scroll reveal
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); }
   });
 }, { threshold: 0.08 });
-
-document.querySelectorAll('.reveal, .reveal-stagger').forEach(el => revealObserver.observe(el));
+document.querySelectorAll('.rv, .sg').forEach(el => obs.observe(el));
 </script>
 </body>
 </html>
